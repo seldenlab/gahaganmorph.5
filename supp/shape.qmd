@@ -1,5 +1,5 @@
 ---
-title: "Shape + Elemental"
+title: "Morphology + Elemental"
 ---
 
 ```{r load}
@@ -62,6 +62,31 @@ gdf <- geomorph.data.frame(shape = Y.gpa$coords,
                            site = qdata$sitename) 
 ```
 
+## Boxplot
+
+```{r centsizeboxh2, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
+# palette
+pal <- wes_palette("Moonrise2")
+
+# add centroid size to qdata
+qdata$csz <- Y.gpa$Csize
+
+# attributes for boxplot
+csz <- qdata$csz
+site <- qdata$sitename
+
+# boxplot - centroid size by site
+csz.temp <- ggplot(qdata, aes(x = site, y = csz, color = site)) +
+  geom_boxplot() +
+  geom_dotplot(binaxis = 'y', stackdir = 'center', dotsize = 0.3) +
+  scale_color_manual(values = pal) +
+  theme(legend.position = "none") +
+  labs(x = 'Site', y = 'Centroid Size')
+
+## render plot
+csz.temp
+```
+
 ## Principal Components Analysis
 
 ```{r pca}
@@ -70,7 +95,6 @@ pca <- gm.prcomp(Y.gpa$coords)
 summary(pca)
 
 # set plot parameters to plot by context
-pal <- wes_palette("Moonrise2")
 pch.gps <- c(15,17)[as.factor(qdata$sitename)]
 col.gps <- pal[as.factor(qdata$sitename)]
 col.hull <- c("#C27D38","#798E87")
@@ -101,18 +125,40 @@ plotRefToTarget(pca$shapes$shapes.comp2$max,
                 mean.shape)
 ```
 
+## Procrustes ANOVA
+
+```{r define-models.h2}
+# MODEL: shape as a function of site
+fit.shape <- procD.lm(shape ~ site,
+                      data = gdf,
+                      print.progress = FALSE,
+                      iter = 9999)
+
+# ANOVA: do gahagan biface shapes differ by site?
+anova(fit.shape)
+
+# MODEL: size as a function of site
+fit.size <- procD.lm(size ~ site,
+                     data = gdf,
+                     print.progress = FALSE,
+                     iter = 9999)
+
+# ANOVA: do gahagan biface sizes differ by site?
+anova(fit.size)
+```
+
 ## 2B-PLS: Shape
 
 ```{r plsshape}
 # 2B-PLS----
-# geochem data w/o Ca/Fe 
-geochem <- qdata %>%
+# elemental data w/o Ca/Fe 
+elemental <- qdata %>%
   select(Al.K12:Ba.L1, Ni.K12:Zn.K12)
 
-## shape/log.geochem----
-# 2B-PLS (geochem) [shape/geochem]
+## shape/elemental----
+# 2B-PLS (elemental) [shape/elemental]
 cor <- two.b.pls(A1 = Y.gpa$coords,
-                 A2 = geochem,
+                 A2 = elemental,
                  print.progress = FALSE,
                  iter = 9999)
 
@@ -120,21 +166,24 @@ cor <- two.b.pls(A1 = Y.gpa$coords,
 summary(cor)
 
 ## plot PLS
-plot(cor)
+plot(cor, 
+     pch = 21, 
+     bg = qdata$clr,
+     cex = 1.1)
 ```
 
 ## 2B-PLS: Size
 
 ```{r plssize}
 # 2B-PLS----
-# geochem data w/o Ca/Fe
-geochem <- qdata %>%
+# elemental data w/o Ca/Fe
+elemental <- qdata %>%
   select(Al.K12:Ba.L1, Ni.K12:Zn.K12)
 
-## size/log.geochem----
-# 2B-PLS (geochem) [size/geochem]
+## size/elemental----
+# 2B-PLS (elemental) [size/elemental]
 cor <- two.b.pls(A1 = Y.gpa$Csize,
-                 A2 = geochem,
+                 A2 = elemental,
                  print.progress = FALSE,
                  iter = 9999)
 
@@ -142,5 +191,8 @@ cor <- two.b.pls(A1 = Y.gpa$Csize,
 summary(cor)
 
 ## plot PLS
-plot(cor)
+plot(cor, 
+     pch = 21, 
+     bg = qdata$clr,
+     cex = 1.1)
 ```
