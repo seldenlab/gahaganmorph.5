@@ -25,13 +25,13 @@ American Southeast, Caddo, NAGPRA, computational archaeology, archaeoinformatics
 
 ### Elemental data
 
-Elemental data were imported to R [@RN8584] for the production of boxplots, a principal components analysis (PCA), and a permutational multivariate analysis of variance (perMANOVA) to test whether the raw material used in the production of Gahagan bifaces differs between sites.
+Elemental data were imported to R for production of boxplots, principal components analysis (PCA), and permutational multivariate analysis of variance (perMANOVA) to test whether the raw material used in the production of Gahagan bifaces differs between sites.
 
 ```{r figsite, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Composite image illustrating the plot of first two principal components by site using a correlation matrix, illustrating 66.7 percent of cumulative shape variation."}
 knitr::include_graphics('img/pcaelem-1.png')
 ```
 
-Boxplots illustrate the variance and mean for each elemental variable, and the PCA illustrates 66.7 percent of the variation in the sample among PC1 (49.65 percent) and PC2 (17.05 percent). The perMANOVA demonstrated that elemental values for raw materials used to produce Gahagan bifaces differ significantly by site (permutations = 10,000; Pr(>F) = 0.0309).
+Boxplots illustrated the variance and mean for each elemental variable, and the PCA illustrates 66.7 percent of the variation in the sample among PC1 (49.65 percent) and PC2 (17.05 percent). The perMANOVA demonstrated that elemental values for raw materials used to produce Gahagan bifaces differ significantly by site (permutations = 10,000; Pr(>F) = 0.0309).
 
   -   Raw material used in the production of Gahagan bifaces included in Caddo burials _**differs significantly**_ between Mounds Plantation and Gahagan Mound
   
@@ -55,7 +55,7 @@ To assess whether `shape` and `size` differs by `site`, Procrustes ANOVAs [@RN17
 
 #### 2B-PLS
 
-```{r fig2BPLS, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Plot of two-block partial least-squares analysis for significant correlation expressed between Gahagan biface shape variables (Block 1) and elemental data (Block 2)."}
+```{r fig2BPLS, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Two-block partial least-squares analysis was used to test for a correlation between Gahagan biface shape (Block 1) and elemental variables (Block 2)."}
 knitr::include_graphics('img/plsshape-1.png')
 ```
 
