@@ -25,7 +25,7 @@ pal <- wes_palette("Moonrise2")
 
 ```{r pca}
 #pca
-pch.gps <- c(1:2)[as.factor(raw$Site)]
+pch.gps <- c(15,17)[as.factor(raw$Site)]
 Site <- raw$Site
 
 ## pca plot using correlation matrix

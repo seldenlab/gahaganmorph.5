@@ -167,9 +167,9 @@ summary(cor)
 
 ## plot PLS
 plot(cor, 
-     pch = 21, 
-     bg = qdata$clr,
-     cex = 1.1)
+     pch = pch.gps, 
+     col = col.gps,
+     cex = 0.9)
 ```
 
 ## 2B-PLS: Size
@@ -192,7 +192,7 @@ summary(cor)
 
 ## plot PLS
 plot(cor, 
-     pch = 21, 
-     bg = qdata$clr,
-     cex = 1.1)
+     pch = pch.gps, 
+     col = col.gps,
+     cex = 0.9)
 ```

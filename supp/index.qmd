@@ -23,11 +23,15 @@ American Southeast, Caddo, NAGPRA, computational archaeology, archaeoinformatics
 
 ## Primary findings
 
+```{r fig02, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Gahagan bifaces from Mounds Plantation and Gahagan Mound. Bifaces k2 and p2 were not used in this analysis due to missing/damaged elements of basal morphology. Images and metadata for all Gahagan bifaces used in this study are openly available to view/download in an open access comparative collection ([https://scholarworks.sfasu.edu/ita-gahaganbiface/](https://scholarworks.sfasu.edu/ita-gahaganbiface/)), with permission from the Caddo Nation of Oklahoma."}
+knitr::include_graphics('img/fig02.jpg')
+```
+
 ### Elemental data
 
 Elemental data were imported to R for production of boxplots, principal components analysis (PCA), and permutational multivariate analysis of variance (perMANOVA) to test whether the raw material used in the production of Gahagan bifaces differs between sites.
 
-```{r figsite, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Composite image illustrating the plot of first two principal components by site using a correlation matrix, illustrating 66.7 percent of cumulative shape variation."}
+```{r figsite, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Composite image illustrating the plot of first two principal components by site using a correlation matrix, illustrating 66.7 percent of cumulative shape variation, where orange triangles denote Mounds Plantation, and gray squared denote Gahagan Mound."}
 knitr::include_graphics('img/pcaelem-1.png')
 ```
 
@@ -45,7 +49,7 @@ Landmark data were aligned to a global coordinate system [@RN8477;@RN7502;@RN116
 
 Principal components analysis [@RN1746] was used to visualise shape variation among the elliptical bifaces, and the scatterplot represents the dispersion of shapes in tangent space [@RN8633;@RN5616;@RN11143;@RN7550]. Shape ranges described by each principal axis are commonly visualized using thin-plate spline warping of a reference image [@RN1731;@RN479].
 
-```{r figpcashape, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="PCA summarizing shape variation in Gahagan bifaces from Mounds Plantation (orange) and Gahagan Mound (gray)."}
+```{r figpcashape, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="PCA summarizing shape variation in Gahagan bifaces from Mounds Plantation (orange triangles) and Gahagan Mound (gray squares)."}
 knitr::include_graphics('img/pcashape-1.png')
 ```
 
@@ -55,7 +59,7 @@ To assess whether `shape` and `size` differs by `site`, Procrustes ANOVAs [@RN17
 
 #### 2B-PLS
 
-```{r fig2BPLS, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Two-block partial least-squares analysis was used to test for a correlation between Gahagan biface shape (Block 1) and elemental variables (Block 2)."}
+```{r fig2BPLS, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Two-block partial least-squares analysis was used to test for a correlation between Gahagan biface shape (Block 1) and elemental variables (Block 2); orange triangles, Mounds Plantation; gray squares, Gahagan Mound."}
 knitr::include_graphics('img/plsshape-1.png')
 ```
 
@@ -74,7 +78,7 @@ Components of the analytical workflow were developed and funded by a Preservatio
 
 ## Data management
 
-All data and analysis code associated with this project are openly available through the [GitHub](https://github.com/seldenlab/gahaganmorph.5) repository, which is digitally curated on the Open Science Framework ([DOI 10.17605/OSF.IO/PF5RQ](https://osf.io/pf5rq/)). Images of all Perdiz arrow points used in this study are openly available to view/download in an open access comparative collection ([https://scholarworks.sfasu.edu/ita-gahaganbiface/](https://scholarworks.sfasu.edu/ita-gahaganbiface/)), with permission from the Caddo Nation of Oklahoma. These supplementary materials include all analysis data and code used in the study, providing a means for others to reproduce (exactly) those results discussed and expounded upon in this article. The replicable nature of this undertaking provides others with the means to critically assess and evaluate the various analytical components of this study [@RN20915;@RN20916;@RN20917], which is a necessary requirement for the production of reliable knowledge. 
+All data and analysis code associated with this project are openly available through the [GitHub](https://github.com/seldenlab/gahaganmorph.5) repository, which is digitally curated on the Open Science Framework ([DOI 10.17605/OSF.IO/3JB94](https://osf.io/3jb94/)). Images of all Gahagan bifaces used in this study are openly available to view/download in an open access comparative collection ([https://scholarworks.sfasu.edu/ita-gahaganbiface/](https://scholarworks.sfasu.edu/ita-gahaganbiface/)), with permission from the Caddo Nation of Oklahoma. These supplementary materials include all analysis data and code used in the study, providing a means for others to reproduce (exactly) those results discussed and expounded upon in this article. The replicable nature of this undertaking provides others with the means to critically assess and evaluate the various analytical components of this study [@RN20915;@RN20916;@RN20917], which is a necessary requirement for the production of reliable knowledge. 
 
 Reproducibility projects in [psychology](https://osf.io/ezcuj/) and [cancer biology](https://www.cos.io/rpcb) are impacting current research practices across all domains. Examples of reproducible research are becoming more abundant in archaeology [@RN20804;@RN21009;@RN8322;@RN8980;@RN11097], and the next generation of archaeologists are learning those tools and methods needed to reproduce and/or replicate research results [@RN21007]. Reproducible and replicable research work flows are often employed at the highest levels of humanities-based inquiries to mitigate concern or doubt regarding proper execution, and is of particular import should the results have—explicitly or implicitly—a major impact on scientific progress [@RN21008].
 
