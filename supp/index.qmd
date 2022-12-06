@@ -23,7 +23,7 @@ American Southeast, Caddo, NAGPRA, computational archaeology, archaeoinformatics
 
 ## Primary findings
 
-```{r figmap, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Location of Mounds Plantation and Gahagan Mound, local boundaries of the Red River basin, and geographic extent of ancestral Caddo area."}
+```{r figmap, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Location of Mounds Plantation and Gahagan Mound, local boundaries of the Red River basin (blue), and geographic extent of ancestral Caddo area (dashed white)."}
 knitr::include_graphics('img/map.png')
 ```
 
@@ -68,7 +68,7 @@ knitr::include_graphics('img/plsshape-1.png')
 ```
 
   -   The shape of Gahagan bifaces included in Caddo burials at Mounds Plantation and Gahagan Mound _**differ significantly**_
-  -   The size of Gahagan biface included in Caddo burials at Mounds Plantation and Gahagan Mound is consistent
+  -   The size of Gahagan bifaces included in Caddo burials at Mounds Plantation and Gahagan Mound are consistent
   -   Gahagan biface shape is _**significantly correlated**_ with raw material
   -   Gahagan biface size is not correlated with raw material
 
