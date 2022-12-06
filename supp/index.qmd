@@ -1,5 +1,96 @@
 ---
-title: "Is Gahagan biface morphology correlated with raw material?"
+title: "Biface morphology as a function of raw material? A case study from the American Southeast"
+author:
+  - name: Robert Z. Selden, Jr.
+    affiliations:
+      - Heritage Research Center, Stephen F. Austin State University; Department of Biology, Stephen F. Austin State University; Texas Archeological Research Laboratory, The University of Texas at Austin; and Cultural Heritage Department, Jean Monnet University
+    email: zselden@sfasu.edu
+    orcid: 0000-0002-1789-8449
+bibliography: [rawmat.bib]
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+link-citations: yes
+github-repo: seldenlab/gahaganmorph.5
 ---
 
-Lorem ipsum
+>“The question of questions for mankind—the problem which underlies all others, and is more deeply interesting than any other—is the ascertainment of the place which man occupies in nature, and of his relation to the universe of things.” **–H. Thomas Henry Huxley**, _Man’s Place in Nature_
+
+# Basis of inquiry
+
+
+### Keywords
+
+American Southeast, Caddo, NAGPRA, computational archaeology, archaeoinformatics, museum studies, digital humanities, non-Western art history, STEM, STEAM
+
+## Primary findings
+
+### Elemental data
+
+Elemental data were imported to R [@RN8584] for the production of boxplots, a principal components analysis (PCA), and a permutational multivariate analysis of variance (perMANOVA) to test whether the raw material used in the production of Gahagan bifaces differs between sites.
+
+```{r figsite, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Composite image illustrating the plot of first two principal components by site using a correlation matrix, illustrating 66.7 percent of cumulative shape variation."}
+knitr::include_graphics('img/pcaelem-1.png')
+```
+
+Boxplots illustrate the variance and mean for each elemental variable, and the PCA illustrates 66.7 percent of the variation in the sample among PC1 (49.65 percent) and PC2 (17.05 percent). The perMANOVA demonstrated that elemental values for raw materials used to produce Gahagan bifaces differ significantly by site (permutations = 10,000; Pr(>F) = 0.0309).
+
+  -   Raw material used in the production of Gahagan bifaces included in Caddo burials _**differs significantly**_ between Mounds Plantation and Gahagan Mound
+  
+### Geometric morphometrics
+
+#### Generalised Procrustes Analysis
+
+Landmark data were aligned to a global coordinate system [@RN8477;@RN7502;@RN11622;@RN11623;@RN11563], achieved through generalised Procrustes superimposition [@RN11138;@RN478;@RN1646] in R using the `geomorph` and `RRPP` packages [@RN1655;@RN11775;@RN11530;@RN1774;@RN9565]. Procrustes superimposition translates and rotates the coordinate data to allow for comparisons among objects, while also scaling each biface using unit-centroid size---the square root of the sum of squared distances from each landmark to the specimen’s centroid [@RN11139;@RN11140;@RN11564;@RN478]. The `geomorph` package uses a partial Procrustes superimposition that projects the aligned specimens into tangent space subsequent to alignment in preparation for the use of multivariate methods that assume linear space [@RN11141;@RN11142;@RN1646;@RN11563].
+
+#### Principal Components Analysis
+
+Principal components analysis [@RN1746] was used to visualise shape variation among the elliptical bifaces, and the scatterplot represents the dispersion of shapes in tangent space [@RN8633;@RN5616;@RN11143;@RN7550]. Shape ranges described by each principal axis are commonly visualized using thin-plate spline warping of a reference image [@RN1731;@RN479].
+
+```{r figpcashape, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="PCA summarizing shape variation in Gahagan bifaces from Mounds Plantation (orange) and Gahagan Mound (gray)."}
+knitr::include_graphics('img/pcashape-1.png')
+```
+
+#### Procrustes ANOVA
+
+To assess whether `shape` and `size` differs by `site`, Procrustes ANOVAs [@RN1749] were run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions [@RN1756]. A residual randomization permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs [@RN1655;@RN11775], which has higher statistical power and a greater ability to identify patterns in the data should they be present [@RN1719].
+
+#### 2B-PLS
+
+```{r fig2BPLS, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Plot of two-block partial least-squares analysis for significant correlation expressed between Gahagan biface shape variables (Block 1) and elemental data (Block 2)."}
+knitr::include_graphics('img/plsshape-1.png')
+```
+
+  -   The shape of Gahagan bifaces included in Caddo burials at Mounds Plantation and Gahagan Mound _**differ significantly**_
+  -   The size of Gahagan biface included in Caddo burials at Mounds Plantation and Gahagan Mound is consistent
+  -   Gahagan biface shape is _**significantly correlated**_ with raw material
+  -   Gahagan biface size is not correlated with raw material
+
+## Acknowledgments
+
+We extend our gratitude to the Caddo Nation of Oklahoma, the Caddo Nation Tribal Council, Tribal Chairman, and Tribal Historic Preservation Office for their continued guidance and support of our work, as well as access to NAGPRA and previously repatriated collections. Thanks also to the Williamson Museum and the Louisiana State Exhibit Museum for providing access to the Gahagan bifaces. I extend my gratitude to Emma Sherratt, Kersten Bergstrom, Lauren Butaric, Julien Claude, Dean C. Adams, and Michael L. Collyer for their constructive criticisms and suggestions throughout the development of this research program.
+
+## Funding
+
+Components of the analytical workflow were developed and funded by a Preservation Technology and Training grant (P14AP00138) to RZS from the National Center for Preservation Technology and Training, as well as grants to RZS from the Caddo Nation of Oklahoma, National Forests and Grasslands in Texas (15-PA-11081300-033) and the United States Forest Service (20-PA-11081300-074). Additional funding and logistical support was provided by the Heritage Research Center at Stephen F. Austin State University.
+
+## Data management
+
+All data and analysis code associated with this project are openly available through the [GitHub](https://github.com/seldenlab/gahaganmorph.5) repository, which is digitally curated on the Open Science Framework ([DOI 10.17605/OSF.IO/PF5RQ](https://osf.io/pf5rq/)). Images of all Perdiz arrow points used in this study are openly available to view/download in an open access comparative collection ([https://scholarworks.sfasu.edu/ita-gahaganbiface/](https://scholarworks.sfasu.edu/ita-gahaganbiface/)), with permission from the Caddo Nation of Oklahoma. These supplementary materials include all analysis data and code used in the study, providing a means for others to reproduce (exactly) those results discussed and expounded upon in this article. The replicable nature of this undertaking provides others with the means to critically assess and evaluate the various analytical components of this study [@RN20915;@RN20916;@RN20917], which is a necessary requirement for the production of reliable knowledge. 
+
+Reproducibility projects in [psychology](https://osf.io/ezcuj/) and [cancer biology](https://www.cos.io/rpcb) are impacting current research practices across all domains. Examples of reproducible research are becoming more abundant in archaeology [@RN20804;@RN21009;@RN8322;@RN8980;@RN11097], and the next generation of archaeologists are learning those tools and methods needed to reproduce and/or replicate research results [@RN21007]. Reproducible and replicable research work flows are often employed at the highest levels of humanities-based inquiries to mitigate concern or doubt regarding proper execution, and is of particular import should the results have—explicitly or implicitly—a major impact on scientific progress [@RN21008].
+
+## Colophon
+
+This version of the analysis was generated on `r Sys.time()` using the following computational environment and dependencies: 
+
+```{r colophon, cache = FALSE}
+# what R packages and versions were used?
+if ("devtools" %in% installed.packages()) devtools::session_info()
+```
+
+Current Git commit details are:
+
+```{r}
+# where can I find this commit? 
+if ("git2r" %in% installed.packages() & git2r::in_repository(path = ".")) git2r::repository(here::here())  
+```
+
