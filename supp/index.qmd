@@ -23,6 +23,10 @@ American Southeast, Caddo, NAGPRA, computational archaeology, archaeoinformatics
 
 ## Primary findings
 
+```{r figmap, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Location of Mounds Plantation and Gahagan Mound, local boundaries of the Red River basin, and geographic extent of ancestral Caddo area."}
+knitr::include_graphics('img/map.png')
+```
+
 ```{r fig02, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Gahagan bifaces from Mounds Plantation and Gahagan Mound. Bifaces k2 and p2 were not used in this analysis due to missing/damaged elements of basal morphology. Images and metadata for all Gahagan bifaces used in this study are openly available to view/download in an open access comparative collection ([https://scholarworks.sfasu.edu/ita-gahaganbiface/](https://scholarworks.sfasu.edu/ita-gahaganbiface/)), with permission from the Caddo Nation of Oklahoma."}
 knitr::include_graphics('img/fig02.jpg')
 ```

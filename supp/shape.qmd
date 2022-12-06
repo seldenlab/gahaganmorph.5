@@ -54,7 +54,7 @@ Y.gpa <- gpagen(coords,
                 PrinAxes = TRUE,
                 print.progress = FALSE)
 ## plot gpa
-plot(Y.gpa)
+#plot(Y.gpa)
 
 # geomorph data frame
 gdf <- geomorph.data.frame(shape = Y.gpa$coords,
