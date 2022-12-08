@@ -26,7 +26,7 @@ American Southeast, Caddo, NAGPRA, computational archaeology, archaeoinformatics
 
 ## Primary findings
 
-```{r figmap, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Location of Mounds Plantation and Gahagan Mound, local boundaries of the Red River basin, and geographic extent of ancestral Caddo area."}
+```{r figmap, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Location of Mounds Plantation and Gahagan Mound, local boundaries of the Red River basin (blue), and geographic extent of ancestral Caddo area (dashed white)."}
 knitr::include_graphics('img/map.png')
 ```
 
@@ -64,6 +64,10 @@ knitr::include_graphics('img/pcashape-1.png')
 
 To assess whether `shape` and `size` differs by `site`, Procrustes ANOVAs [@RN1749] were run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions [@RN1756]. A residual randomization permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs [@RN1655;@RN11775], which has higher statistical power and a greater ability to identify patterns in the data should they be present [@RN1719].
 
+### Morphological disparity
+
+An analysis of morphological disparity was used to identify potential differences in shape and size diversity between sites [@RN11107;@RN7041;@RN5694].
+
 #### 2B-PLS
 
 ```{r fig2BPLS, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Two-block partial least-squares analysis was used to test for a correlation between Gahagan biface shape (Block 1) and elemental variables (Block 2); orange triangles, Mounds Plantation; gray squares, Gahagan Mound."}
@@ -71,7 +75,8 @@ knitr::include_graphics('img/plsshape-1.png')
 ```
 
   -   The shape of Gahagan bifaces included in Caddo burials at Mounds Plantation and Gahagan Mound _**differ significantly**_
-  -   The size of Gahagan biface included in Caddo burials at Mounds Plantation and Gahagan Mound is consistent
+  -   The size of Gahagan bifaces included in Caddo burials at Mounds Plantation and Gahagan Mound are consistent
+  -   The analysis of morphological disparity by shape and size suggests morphological consistency between sites
   -   Gahagan biface shape is _**significantly correlated**_ with raw material
   -   Gahagan biface size is not correlated with raw material
 
