@@ -1,11 +1,14 @@
 ---
-title: "Biface morphology as a function of raw material? A case study from the American Southeast"
+title: "3D geometric morphometrics paired with pXRF in an empirical quantitative assessment of biface morphology as a function of raw material"
 author:
   - name: Robert Z. Selden, Jr.
     affiliations:
       - Heritage Research Center, Stephen F. Austin State University; Department of Biology, Stephen F. Austin State University; Texas Archeological Research Laboratory, The University of Texas at Austin; and Cultural Heritage Department, Jean Monnet University
     email: zselden@sfasu.edu
     orcid: 0000-0002-1789-8449
+  - name: Catherine G. Cooper
+      affiliations:
+        - National Center for Preservation Technology and Training, National Park Service
 bibliography: [rawmat.bib]
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 link-citations: yes
