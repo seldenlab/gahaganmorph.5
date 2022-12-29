@@ -1,11 +1,15 @@
 ---
 title: "Gahagan biface morphology as a function of raw material? A case study from the American Southeast"
+
 author:
   - name: Robert Z. Selden, Jr.
     affiliations:
       - Heritage Research Center, Stephen F. Austin State University; Department of Biology, Stephen F. Austin State University; Texas Archeological Research Laboratory, The University of Texas at Austin; and Cultural Heritage Department, Jean Monnet University
     email: zselden@sfasu.edu
     orcid: 0000-0002-1789-8449
+  - name: Catherine G. Cooper
+    affiliations:
+      - National Center for Preservation Technology and Training, National Park Service
 bibliography: [rawmat.bib]
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 link-citations: yes
@@ -16,6 +20,7 @@ github-repo: seldenlab/gahaganmorph.5
 
 # Basis of inquiry
 
+Archaeologists have often made the assumption that raw material choices articulate with differences in stone tool morphology. That same logic can be extended to include the physical properties of a single raw material type---in this case, Edwards Chert---where distinct within-source differences may similarly constrain production-based decisions that resulted in morphological differences. Gahagan bifaces from Caddo burial contexts at Mounds Plantation and Gahagan Mound are assumed to have been manufactured using Edwards Chert from central Texas sources. This is due in part to the manner in which the raw material fluoresces beneath high and low-frequency UV light, coupled with the absence of locally-available raw materials of this size and quality. Additionally, no evidence of on-site production was recovered at either site, suggesting that manufacture occurred off-site. Using the non-invasive/non-destructive tools of 3D geometric morphometrics in tandem with pXRF, this study asks whether Gahagan biface morphology and raw materials differ by site, and whether biface morphology is correlated with raw material. Findings demonstrate that Gahagan bifaces differ in shape and raw material by site, and that biface shape is significantly correlated with raw material. At minimum, these findings suggest that the procurement of raw material used in the manufacture of Gahagan bifaces came from different locations in the Edwards Formation, and that discrete biface shapes were crafted with each. Given the absence of local production evidence at Mounds Plantation and Gahagan Mound, it is posited that the Gahagan bifaces included in Caddo burial contexts were acquired through trade and/or exchange with the central Texas groups that manufactured them.
 
 ### Keywords
 
@@ -33,23 +38,19 @@ knitr::include_graphics('img/fig02.jpg')
 
 ### Elemental data
 
-Elemental data were imported to R for production of boxplots, principal components analysis (PCA), and permutational multivariate analysis of variance (perMANOVA) to test whether the raw material used in the production of Gahagan bifaces differs between sites.
+Elemental data were imported to R for production of boxplots, principal components analysis (PCA), and a permutational multivariate analysis of variance (perMANOVA) to test whether the raw material used in the production of Gahagan bifaces differs between sites.
 
 ```{r figsite, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Composite image illustrating the plot of first two principal components by site using a correlation matrix, illustrating 66.7 percent of cumulative shape variation, where orange triangles denote Mounds Plantation, and gray squared denote Gahagan Mound."}
 knitr::include_graphics('img/pcaelem-1.png')
 ```
 
-Boxplots illustrated the variance and mean for each elemental variable, and the PCA illustrates 66.7 percent of the variation in the sample among PC1 (49.65 percent) and PC2 (17.05 percent). The perMANOVA demonstrated that elemental values for raw materials used to produce Gahagan bifaces differ significantly by site (permutations = 10,000; Pr(>F) = 0.0309).
+Boxplots illustrated the variance and mean for each variable, and the PCA illustrates 66.7 percent of the variation in the sample among PC1 (49.65 percent) and PC2 (17.05 percent). The perMANOVA demonstrated that elemental values for raw materials used to produce Gahagan bifaces differ significantly by site (permutations = 10,000; Pr(>F) = 0.0309).
 
   -   Raw material used in the production of Gahagan bifaces included in Caddo burials _**differs significantly**_ between Mounds Plantation and Gahagan Mound
   
 ### Geometric morphometrics
 
-#### Generalised Procrustes Analysis
-
 Landmark data were aligned to a global coordinate system [@RN8477;@RN7502;@RN11622;@RN11623;@RN11563], achieved through generalised Procrustes superimposition [@RN11138;@RN478;@RN1646] in R using the `geomorph` and `RRPP` packages [@RN1655;@RN11775;@RN11530;@RN1774;@RN9565]. Procrustes superimposition translates and rotates the coordinate data to allow for comparisons among objects, while also scaling each biface using unit-centroid size---the square root of the sum of squared distances from each landmark to the specimen’s centroid [@RN11139;@RN11140;@RN11564;@RN478]. The `geomorph` package uses a partial Procrustes superimposition that projects the aligned specimens into tangent space subsequent to alignment in preparation for the use of multivariate methods that assume linear space [@RN11141;@RN11142;@RN1646;@RN11563].
-
-#### Principal Components Analysis
 
 Principal components analysis [@RN1746] was used to visualise shape variation among the elliptical bifaces, and the scatterplot represents the dispersion of shapes in tangent space [@RN8633;@RN5616;@RN11143;@RN7550]. Shape ranges described by each principal axis are commonly visualized using thin-plate spline warping of a reference image [@RN1731;@RN479].
 
@@ -57,15 +58,7 @@ Principal components analysis [@RN1746] was used to visualise shape variation am
 knitr::include_graphics('img/pcashape-1.png')
 ```
 
-#### Procrustes ANOVA
-
-To assess whether `shape` and `size` differs by `site`, Procrustes ANOVAs [@RN1749] were run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions [@RN1756]. A residual randomization permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs [@RN1655;@RN11775], which has higher statistical power and a greater ability to identify patterns in the data should they be present [@RN1719].
-
-### Morphological disparity
-
-An analysis of morphological disparity was used to identify potential differences in shape and size diversity between sites [@RN11107;@RN7041;@RN5694].
-
-#### 2B-PLS
+To assess whether `shape` and `size` differs by `site`, Procrustes ANOVAs [@RN1749] were run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions [@RN1756]. A residual randomization permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs [@RN1655;@RN11775], which has higher statistical power and a greater ability to identify patterns in the data should they be present [@RN1719]. An analysis of morphological disparity was used to identify potential differences in shape and size diversity between sites [@RN11107;@RN7041;@RN5694]. 
 
 ```{r fig2BPLS, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Two-block partial least-squares analysis was used to test for a correlation between Gahagan biface shape (Block 1) and elemental variables (Block 2); orange triangles, Mounds Plantation; gray squares, Gahagan Mound."}
 knitr::include_graphics('img/plsshape-1.png')
@@ -106,4 +99,3 @@ Current Git commit details are:
 # where can I find this commit? 
 if ("git2r" %in% installed.packages() & git2r::in_repository(path = ".")) git2r::repository(here::here())  
 ```
-
