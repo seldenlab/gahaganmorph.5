@@ -1,9 +1,15 @@
 project:
   type: website
+  render:
+    - index.qmd
+    - pxrf.qmd
+    - shape.qmd
 
 website:
-  title: "gahaganmorph.5"
+  margin-header: |
+    ![](/img/slab.png)
   navbar:
+    logo: "sfasu.png"
     left:
       - href: index.qmd
         text: Home
@@ -12,7 +18,7 @@ website:
 
 format:
   html:
-    theme: lux
+    theme: spacelab
     css: styles.css
     toc: true
 
