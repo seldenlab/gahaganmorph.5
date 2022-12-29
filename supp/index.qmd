@@ -1,5 +1,5 @@
 ---
-title: "Biface morphology as a function of raw material? A case study from the American Southeast"
+title: "Gahagan biface morphology as a function of raw material? A case study from the American Southeast"
 author:
   - name: Robert Z. Selden, Jr.
     affiliations:
