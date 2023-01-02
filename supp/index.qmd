@@ -28,7 +28,7 @@ _American Southeast, Caddo, NAGPRA, trade, exchange, commerce, computational arc
 
 ## Primary findings
 
-```{r figmap, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Location of Mounds Plantation and Gahagan Mound, illustrating local geology, and geographic extent of ancestral Caddo area (dashed white) at the intersection of ."}
+```{r figmap, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Location of Mounds Plantation and Gahagan Mound, illustrating local geology, and geographic extent of ancestral Caddo area (dashed white)."}
 knitr::include_graphics('img/map.png')
 ```
 
