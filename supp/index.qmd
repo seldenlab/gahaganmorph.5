@@ -14,6 +14,7 @@ bibliography: [rawmat.bib]
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 link-citations: yes
 github-repo: seldenlab/gahaganmorph.5
+description: Supplemental Materials
 ---
 
 >“The question of questions for mankind—the problem which underlies all others, and is more deeply interesting than any other—is the ascertainment of the place which man occupies in nature, and of his relation to the universe of things.” **–H. Thomas Henry Huxley**, _Man’s Place in Nature_
