@@ -1,10 +1,5 @@
 ---
-<<<<<<< HEAD
 title: "An empirical assessment of Gahagan biface morphology as a function of raw material"
-=======
-title: "Gahagan biface morphology as a function of raw material? A case study from the American Southeast"
-
->>>>>>> 6f572952b841be46dd2adc8fa87e944f40d445f9
 author:
   - name: Robert Z. Selden, Jr.
     affiliations:
@@ -25,11 +20,7 @@ description: Supplemental Materials
 
 # Basis of inquiry
 
-<<<<<<< HEAD
-Archaeologists have often made the assumption that raw material choices articulate with differences in stone tool morphology, where morphological attributes are thought to have been constrained by the physical properties of different material. Gahagan bifaces from Caddo burial contexts at Mounds Plantation and Gahagan Mound are assumed to have been manufactured using Edwards Chert from central Texas. This is due in part to the manner in which the raw material has been found to fluoresce beneath high and low-frequency UV light, coupled with the absence of locally-available raw materials of similar size and quality. Additionally, no evidence of on-site production was recovered at either site, suggesting that production occurred off-site. Using the non-invasive and non-destructive tools of 3D geometric morphometrics and pXRF on the Gahagan bifaces from Caddo mortuary contexts at Mounds Plantation and Gahagan Mound, this study asks whether Gahagan biface morphology and raw materials differ by site, and whether biface morphology is correlated with raw material. Findings demonstrate that Gahagan bifaces differ in shape and raw material by site, and that biface shape is significantly correlated with raw material. At minimum, these findings suggest that the procurement of raw material used in the manufacture of Gahagan bifaces came from two geochemically distinct locations in the Edwards Formation, and that discrete biface shapes were crafted with each. However, raw material was not directly sourced to the Edwards Formation, thus, it is also possible that one, or both, groups were crafted using different sources entirely. However, it can be deduced that Gahagan bifaces included in Caddo burial contexts at Mounds Plantation and Gahagan Mound were acquired through trade and/or exchange with the two groups---each with distinct elemental and morphological signatures---that manufactured them.
-=======
 Archaeologists regularly assume that the physical properties of lithic raw materials are a determining factor in the morphology of stone tools; although, some have argued that this assumption warrants regular testing. Raw material nodule size and mechanical flaking properties are routinely advanced to account for morphological differences that occur between sites and assemblages. Gahagan bifaces are thought to have been manufactured using Edwards Chert, and distinct within-source raw material variability may similarly constrain the mechanics of production, resulting in shape and size differences. Using the non-invasive/non-destructive tools of 3D geometric morphometrics paired with pXRF, this study asks whether Gahagan biface morphology and raw materials differ by site, and whether biface morphology is correlated with raw material. Findings demonstrate that Gahagan bifaces differ significantly in shape and raw material by site, and that biface shape is significantly correlated with raw material. At minimum, results suggest that those raw materials used to manufacture the Gahagan bifaces from Gahagan Mound and Mounds Plantation came from two different locations in the Edwards Formation, and that distinct biface shapes were crafted with each. However, it may also be the case that these two assemblages were manufactured from different raw materials entirely. Given these findings paired with the absence of local production evidence, it is posited that Gahagan bifaces from Caddo mortuary contexts at Gahagan Mound and Mounds Plantation were acquired through trade and/or exchange with two different groups of producers, each using distinct raw materials. Thus, this study yields support for the assumption that lithic raw material properties are a determining factor of morphological differences in stone tools. Due to the fact that biface size is not correlated with raw material, mechanical flaking properties are advanced as the driver of those differences found to occur in Gahagan biface shape.
->>>>>>> 6f572952b841be46dd2adc8fa87e944f40d445f9
 
 ### Keywords
 
@@ -37,7 +28,7 @@ _American Southeast, Caddo, NAGPRA, trade, exchange, commerce, computational arc
 
 ## Primary findings
 
-```{r figmap, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Location of Mounds Plantation and Gahagan Mound, local boundaries of the Red River basin (blue), and geographic extent of ancestral Caddo area (dashed white)."}
+```{r figmap, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Location of Mounds Plantation and Gahagan Mound, illustrating local geology, and geographic extent of ancestral Caddo area (dashed white)."}
 knitr::include_graphics('img/map.png')
 ```
 
@@ -57,11 +48,7 @@ Elemental data were subsequently imported to R for a principal components analys
 knitr::include_graphics('img/pcaelem-1.png')
 ```
 
-<<<<<<< HEAD
 Boxplots illustrated the variance and mean for each variable, and the PCA illustrates 66.7 percent of the variation in the sample among PC1 (49.65 percent) and PC2 (17.05 percent). The perMANOVA demonstrated that elemental values for raw materials used to produce the Gahagan bifaces from Mounds Plantation and Gahagan Mound differ significantly by site (permutations = 10,000; Pr(>F) = 0.0309).
-=======
-Boxplots illustrate the variance and mean for each variable, and the PCA illustrates 66.7 percent of the variation in the sample among PC1 (49.65 percent) and PC2 (17.05 percent). The perMANOVA demonstrated that elemental values for raw materials used to produce Gahagan bifaces differ significantly by site (permutations = 10,000; Pr(>F) = 0.0309).
->>>>>>> 6f572952b841be46dd2adc8fa87e944f40d445f9
 
   -   Raw materials used in the production of Gahagan bifaces at Gahagan Mound and Mounds Plantation _**differs significantly**_ 
   

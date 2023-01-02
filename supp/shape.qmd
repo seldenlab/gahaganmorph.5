@@ -215,21 +215,21 @@ plot(cor,
 
 ```{r mshape, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
 # subset landmark coordinates to produce mean shapes for contexts
-new.coords <- coords.subset(A = Y.gpa$coords,
-                            group = qdata$sitename)
+#new.coords <- coords.subset(A = Y.gpa$coords,
+#                            group = qdata$sitename)
 
-names(new.coords)
+#names(new.coords)
 
 ## plot shape means
-mean <- lapply(new.coords, mshape)
-plot(mean$`Gahagan Mound`)
-plot(mean$`Mounds Plantation`)
+#mean <- lapply(new.coords, mshape)
+#plot(mean$`Gahagan Mound`)
+#plot(mean$`Mounds Plantation`)
 
 # comparison plots
-plotRefToTarget(mean$`Gahagan Mound`,
-                mean$`Mounds Plantation`, 
-                method = "points",
-                mag = 1)
+#plotRefToTarget(mean$`Gahagan Mound`,
+#                mean$`Mounds Plantation`, 
+#                method = "points",
+#                mag = 1)
 
 ## 3D plot - final figure
 knitr::include_graphics('img/mshape.jpg')
