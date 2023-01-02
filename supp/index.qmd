@@ -74,6 +74,10 @@ knitr::include_graphics('img/plsshape-1.png')
   -   Gahagan biface shape is _**significantly correlated**_ with raw material
   -   Gahagan biface size is not correlated with raw material
 
+```{r mshapecomp, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Comparison of mean shapes for Gahagan bifaces from Gahagan Mound (left) and Mounds Plantation (right). In the comparison of mean shapes (center), gray dots represent bifaces from Gahagan Mound, and black dots represent those from Mounds Plantation."}
+knitr::include_graphics('img/mshape.jpg')
+```
+
 ## Acknowledgments
 
 We extend our gratitude to the Caddo Nation of Oklahoma, the Caddo Nation Tribal Council, Tribal Chairman, and Tribal Historic Preservation Office for their continued guidance and support of our work, as well as access to NAGPRA and previously repatriated collections. Thanks also to the Williamson Museum and the Louisiana State Exhibit Museum for providing access to the Gahagan bifaces. I extend my gratitude to Emma Sherratt, Kersten Bergstrom, Lauren Butaric, Julien Claude, Dean C. Adams, and Michael L. Collyer for their constructive criticisms and suggestions throughout the development of this research program.
