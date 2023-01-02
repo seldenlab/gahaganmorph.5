@@ -1,5 +1,10 @@
 ---
+<<<<<<< HEAD
 title: "An empirical assessment of Gahagan biface morphology as a function of raw material"
+=======
+title: "Gahagan biface morphology as a function of raw material? A case study from the American Southeast"
+
+>>>>>>> 6f572952b841be46dd2adc8fa87e944f40d445f9
 author:
   - name: Robert Z. Selden, Jr.
     affiliations:
@@ -13,17 +18,22 @@ bibliography: [rawmat.bib]
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 link-citations: yes
 github-repo: seldenlab/gahaganmorph.5
+description: Supplemental Materials
 ---
 
 >“The question of questions for mankind—the problem which underlies all others, and is more deeply interesting than any other—is the ascertainment of the place which man occupies in nature, and of his relation to the universe of things.” **–H. Thomas Henry Huxley**, _Man’s Place in Nature_
 
 # Basis of inquiry
 
+<<<<<<< HEAD
 Archaeologists have often made the assumption that raw material choices articulate with differences in stone tool morphology, where morphological attributes are thought to have been constrained by the physical properties of different material. Gahagan bifaces from Caddo burial contexts at Mounds Plantation and Gahagan Mound are assumed to have been manufactured using Edwards Chert from central Texas. This is due in part to the manner in which the raw material has been found to fluoresce beneath high and low-frequency UV light, coupled with the absence of locally-available raw materials of similar size and quality. Additionally, no evidence of on-site production was recovered at either site, suggesting that production occurred off-site. Using the non-invasive and non-destructive tools of 3D geometric morphometrics and pXRF on the Gahagan bifaces from Caddo mortuary contexts at Mounds Plantation and Gahagan Mound, this study asks whether Gahagan biface morphology and raw materials differ by site, and whether biface morphology is correlated with raw material. Findings demonstrate that Gahagan bifaces differ in shape and raw material by site, and that biface shape is significantly correlated with raw material. At minimum, these findings suggest that the procurement of raw material used in the manufacture of Gahagan bifaces came from two geochemically distinct locations in the Edwards Formation, and that discrete biface shapes were crafted with each. However, raw material was not directly sourced to the Edwards Formation, thus, it is also possible that one, or both, groups were crafted using different sources entirely. However, it can be deduced that Gahagan bifaces included in Caddo burial contexts at Mounds Plantation and Gahagan Mound were acquired through trade and/or exchange with the two groups---each with distinct elemental and morphological signatures---that manufactured them.
+=======
+Archaeologists regularly assume that the physical properties of lithic raw materials are a determining factor in the morphology of stone tools; although, some have argued that this assumption warrants regular testing. Raw material nodule size and mechanical flaking properties are routinely advanced to account for morphological differences that occur between sites and assemblages. Gahagan bifaces are thought to have been manufactured using Edwards Chert, and distinct within-source raw material variability may similarly constrain the mechanics of production, resulting in shape and size differences. Using the non-invasive/non-destructive tools of 3D geometric morphometrics paired with pXRF, this study asks whether Gahagan biface morphology and raw materials differ by site, and whether biface morphology is correlated with raw material. Findings demonstrate that Gahagan bifaces differ significantly in shape and raw material by site, and that biface shape is significantly correlated with raw material. At minimum, results suggest that those raw materials used to manufacture the Gahagan bifaces from Gahagan Mound and Mounds Plantation came from two different locations in the Edwards Formation, and that distinct biface shapes were crafted with each. However, it may also be the case that these two assemblages were manufactured from different raw materials entirely. Given these findings paired with the absence of local production evidence, it is posited that Gahagan bifaces from Caddo mortuary contexts at Gahagan Mound and Mounds Plantation were acquired through trade and/or exchange with two different groups of producers, each using distinct raw materials. Thus, this study yields support for the assumption that lithic raw material properties are a determining factor of morphological differences in stone tools. Due to the fact that biface size is not correlated with raw material, mechanical flaking properties are advanced as the driver of those differences found to occur in Gahagan biface shape.
+>>>>>>> 6f572952b841be46dd2adc8fa87e944f40d445f9
 
 ### Keywords
 
-American Southeast, Caddo, NAGPRA, computational archaeology, archaeoinformatics, museum studies, digital humanities, non-Western art history, STEM, STEAM
+_American Southeast, Caddo, NAGPRA, trade, exchange, commerce, computational archaeology, anthroinformatics, archaeoinformatics, museum studies, digital humanities, non-Western art history, STEM, STEAM_
 
 ## Primary findings
 
@@ -37,19 +47,27 @@ knitr::include_graphics('img/fig02.jpg')
 
 ### Elemental data
 
-Elemental data were imported to R for production of boxplots, principal components analysis (PCA), and a permutational multivariate analysis of variance (perMANOVA) to test whether the raw material used in the production of Gahagan bifaces differs between sites.
+A Bruker Trace Vi handheld portable X-ray Fluorescence (pXRF) instrument was used to collect elemental data. The instrument was transported to the Williamson Museum and Louisiana State Exhibit Museum and set up in a nose-down configuration, where samples were raised into contact with the pXRF window using a pair of small jacks cushioned with fabric. Due to surface irregularities, the contact between the window and the bifaces was imperfect, resulting in variable count and response rates during data collection.
+
+Data was collected using the following scan parameters: 40kV, 35uA, Ti 25um:Al 300um filter for 180 seconds. Peaks in each spectrum were identified manually in Bruker’s Artax software; once elements were identified, the spectrum was evaluated by the Artax Bayesian statistical program to separate overlapping peaks. The Artax results were exported as net peak areas normalized to the silicon (Si) peak.
+
+Elemental data were subsequently imported to R for a principal components analysis (PCA), followed by a permutational multivariate analysis of variance (perMANOVA), used to assess whether raw material differs between sites.
 
 ```{r figsite, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Composite image illustrating the plot of first two principal components by site using a correlation matrix, illustrating 66.7 percent of cumulative shape variation, where orange triangles denote Mounds Plantation, and gray squared denote Gahagan Mound."}
 knitr::include_graphics('img/pcaelem-1.png')
 ```
 
+<<<<<<< HEAD
 Boxplots illustrated the variance and mean for each variable, and the PCA illustrates 66.7 percent of the variation in the sample among PC1 (49.65 percent) and PC2 (17.05 percent). The perMANOVA demonstrated that elemental values for raw materials used to produce the Gahagan bifaces from Mounds Plantation and Gahagan Mound differ significantly by site (permutations = 10,000; Pr(>F) = 0.0309).
+=======
+Boxplots illustrate the variance and mean for each variable, and the PCA illustrates 66.7 percent of the variation in the sample among PC1 (49.65 percent) and PC2 (17.05 percent). The perMANOVA demonstrated that elemental values for raw materials used to produce Gahagan bifaces differ significantly by site (permutations = 10,000; Pr(>F) = 0.0309).
+>>>>>>> 6f572952b841be46dd2adc8fa87e944f40d445f9
 
-  -   Raw material used in the production of Gahagan bifaces included in Caddo burials _**differs significantly**_ between Mounds Plantation and Gahagan Mound
+  -   Raw materials used in the production of Gahagan bifaces at Gahagan Mound and Mounds Plantation _**differs significantly**_ 
   
 ### Geometric morphometrics
 
-Landmark data were aligned to a global coordinate system [@RN8477;@RN7502;@RN11622;@RN11623;@RN11563], achieved through generalised Procrustes superimposition [@RN11138;@RN478;@RN1646] in R using the `geomorph` and `RRPP` packages [@RN1655;@RN11775;@RN11530;@RN1774;@RN9565]. Procrustes superimposition translates and rotates the coordinate data to allow for comparisons among objects, while also scaling each biface using unit-centroid size---the square root of the sum of squared distances from each landmark to the specimen’s centroid [@RN11139;@RN11140;@RN11564;@RN478]. The `geomorph` package uses a partial Procrustes superimposition that projects the aligned specimens into tangent space subsequent to alignment in preparation for the use of multivariate methods that assume linear space [@RN11141;@RN11142;@RN1646;@RN11563].
+Landmark data were aligned to a global coordinate system [@RN8477;@RN7502;@RN11622;@RN11623;@RN11563], achieved through generalized Procrustes superimposition [@RN11138;@RN478;@RN1646] in R using the `geomorph` and `RRPP` packages [@RN1655;@RN11775;@RN11530;@RN1774;@RN9565]. Procrustes superimposition translates and rotates the coordinate data to allow for comparisons among objects, while also scaling each biface using unit-centroid size---the square root of the sum of squared distances from each landmark to the specimen’s centroid [@RN11139;@RN11140;@RN11564;@RN478]. The `geomorph` package uses a partial Procrustes superimposition that projects the aligned specimens into tangent space subsequent to alignment in preparation for the use of multivariate methods that assume linear space [@RN11141;@RN11142;@RN1646;@RN11563].
 
 Principal components analysis [@RN1746] was used to visualise shape variation among the elliptical bifaces, and the scatterplot represents the dispersion of shapes in tangent space [@RN8633;@RN5616;@RN11143;@RN7550]. Shape ranges described by each principal axis are commonly visualized using thin-plate spline warping of a reference image [@RN1731;@RN479].
 
@@ -59,15 +77,19 @@ knitr::include_graphics('img/pcashape-1.png')
 
 To assess whether `shape` and `size` differs by `site`, Procrustes ANOVAs [@RN1749] were run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions [@RN1756]. A residual randomization permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs [@RN1655;@RN11775], which has higher statistical power and a greater ability to identify patterns in the data should they be present [@RN1719]. An analysis of morphological disparity was used to identify potential differences in shape and size diversity between sites [@RN11107;@RN7041;@RN5694]. 
 
-```{r fig2BPLS, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Two-block partial least-squares analysis was used to test for a correlation between Gahagan biface shape (Block 1) and elemental variables (Block 2); orange triangles, Mounds Plantation; gray squares, Gahagan Mound."}
+```{r fig2BPLS, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Two-block partial least-squares analysis was used to test for a correlation between Gahagan biface shape (Block 1) and elemental variables (Block 2); gray squares, Gahagan Mound; orange triangles, Mounds Plantation."}
 knitr::include_graphics('img/plsshape-1.png')
 ```
 
-  -   The shape of Gahagan bifaces included in Caddo burials at Mounds Plantation and Gahagan Mound _**differ significantly**_
-  -   The size of Gahagan bifaces included in Caddo burials at Mounds Plantation and Gahagan Mound are consistent
+  -   The shape of Gahagan bifaces included in Caddo burials at Gahagan Mound and Mounds Plantation _**differ significantly**_
+  -   The size of Gahagan bifaces included in Caddo burials at Gahagan Mound and Mounds Plantation are consistent
   -   The analysis of morphological disparity by shape and size suggests morphological consistency between sites
   -   Gahagan biface shape is _**significantly correlated**_ with raw material
   -   Gahagan biface size is not correlated with raw material
+
+```{r mshapecomp, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Comparison of mean shapes for Gahagan bifaces from Gahagan Mound (left) and Mounds Plantation (right). In the comparison of mean shapes (center), gray dots represent bifaces from Gahagan Mound, and black dots represent those from Mounds Plantation."}
+knitr::include_graphics('img/mshape.jpg')
+```
 
 ## Acknowledgments
 
