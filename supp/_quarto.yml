@@ -10,7 +10,7 @@ website:
     ![](/img/slab.png)
   navbar:
     logo: "sfasu.png"
-    left:
+    right:
       - href: index.qmd
         text: Home
       - pxrf.qmd
