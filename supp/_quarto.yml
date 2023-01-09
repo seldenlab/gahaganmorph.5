@@ -2,7 +2,8 @@ project:
   type: website
   render:
     - index.qmd
-    - pxrf.qmd
+    - color.qmd
+    - pxrf-color.qmd
     - shape.qmd
 
 website:
@@ -13,7 +14,8 @@ website:
     right:
       - href: index.qmd
         text: Home
-      - pxrf.qmd
+      - color.qmd
+      - pxrf-color.qmd
       - shape.qmd
 
 format:
@@ -21,6 +23,3 @@ format:
     theme: spacelab
     css: styles.css
     toc: true
-
-editor: visual
-

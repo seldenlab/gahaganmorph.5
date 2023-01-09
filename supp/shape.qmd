@@ -59,7 +59,7 @@ Y.gpa <- gpagen(coords,
 # geomorph data frame
 gdf <- geomorph.data.frame(shape = Y.gpa$coords,
                            size = Y.gpa$Csize,
-                           site = qdata$sitename) 
+                           color = qdata$ColorGroup) 
 ```
 
 ## Boxplot
@@ -73,15 +73,15 @@ qdata$csz <- Y.gpa$Csize
 
 # attributes for boxplot
 csz <- qdata$csz
-site <- qdata$sitename
+color <- qdata$ColorGroup
 
-# boxplot - centroid size by site
-csz.temp <- ggplot(qdata, aes(x = site, y = csz, color = site)) +
+# boxplot - centroid size by color
+csz.temp <- ggplot(qdata, aes(x = color, y = csz, color = color)) +
   geom_boxplot() +
   geom_dotplot(binaxis = 'y', stackdir = 'center', dotsize = 0.3) +
   scale_color_manual(values = pal) +
   theme(legend.position = "none") +
-  labs(x = 'Site', y = 'Centroid Size')
+  labs(x = 'color', y = 'Centroid Size')
 
 ## render plot
 csz.temp
@@ -95,8 +95,8 @@ pca <- gm.prcomp(Y.gpa$coords)
 summary(pca)
 
 # set plot parameters to plot by context
-pch.gps <- c(15,17)[as.factor(qdata$sitename)]
-col.gps <- pal[as.factor(qdata$sitename)]
+pch.gps <- c(15,17)[as.factor(qdata$ColorGroup)]
+col.gps <- pal[as.factor(qdata$ColorGroup)]
 col.hull <- c("#C27D38","#798E87")
 
 ## plot pca----
@@ -104,7 +104,7 @@ pc.plot <- plot(pca, asp = 1,
                 pch = pch.gps,
                 col = col.gps)
 shapeHulls(pc.plot,
-           groups = qdata$sitename,
+           groups = qdata$ColorGroup,
            group.cols = col.hull)
 
 # plot x/y maxima/minima
@@ -128,38 +128,38 @@ plotRefToTarget(pca$shapes$shapes.comp2$max,
 ## Procrustes ANOVA
 
 ```{r define-models.h2}
-# MODEL: shape as a function of site
-fit.shape <- procD.lm(shape ~ site,
+# MODEL: shape as a function of color
+fit.shape <- procD.lm(shape ~ color,
                       data = gdf,
                       print.progress = FALSE,
                       iter = 9999)
 
-# ANOVA: do gahagan biface shapes differ by site?
+# ANOVA: do gahagan biface shapes differ by color?
 anova(fit.shape)
 
-# MODEL: size as a function of site
-fit.size <- procD.lm(size ~ site,
+# MODEL: size as a function of color
+fit.size <- procD.lm(size ~ color,
                      data = gdf,
                      print.progress = FALSE,
                      iter = 9999)
 
-# ANOVA: do gahagan biface sizes differ by site?
+# ANOVA: do gahagan biface sizes differ by color?
 anova(fit.size)
 ```
 
 ## Morphological disparity
 
 ```{r m-disparity}
-# morphological disparity by site
+# morphological disparity by color
 morphol.disparity(fit.shape, 
-                  groups = qdata$sitename, 
+                  groups = qdata$ColorGroup, 
                   data = gdf, 
                   print.progress = FALSE, 
                   iter = 9999)
 
 # morphological disparity by size
 morphol.disparity(fit.size, 
-                  groups = qdata$sitename, 
+                  groups = qdata$ColorGroup, 
                   data = gdf, 
                   print.progress = FALSE, 
                   iter = 9999)
@@ -171,7 +171,7 @@ morphol.disparity(fit.size,
 # 2B-PLS----
 # elemental data
 elemental <- qdata %>%
-  select(c(Al.K12:Ba.L1, Ni.K12:Zn.K12))
+  select(c(Al.K12:Zn.K12))
 
 ## shape/elemental----
 # 2B-PLS (elemental) [shape/elemental]
@@ -216,18 +216,18 @@ plot(cor,
 ```{r mshape, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
 # subset landmark coordinates to produce mean shapes for contexts
 new.coords <- coords.subset(A = Y.gpa$coords,
-                            group = qdata$sitename)
+                            group = qdata$ColorGroup)
 
 names(new.coords)
 
 ## plot shape means
 mean <- lapply(new.coords, mshape)
-plot(mean$`Gahagan Mound`)
-plot(mean$`Mounds Plantation`)
+plot(mean$A)
+plot(mean$B)
 
 # comparison plots
-plotRefToTarget(mean$`Gahagan Mound`,
-                mean$`Mounds Plantation`, 
+plotRefToTarget(mean$A,
+                mean$B, 
                 method = "points",
                 mag = 1)
 

@@ -1,0 +1,67 @@
+---
+title: "Color ~ Geochemistry"
+---
+
+```{r read}
+## load packages
+library(here)
+library(tidyverse)
+library(vegan)
+library(ggpubr)
+library(ggfortify)
+library(cluster)
+library(ggExtra)
+library(ggConvexHull)
+library(wesanderson)
+
+## load pXRF + qual.data----
+raw <- read.csv('pxrf1.csv',
+                header = TRUE,
+                as.is = TRUE)
+
+#palette
+pal <- wes_palette("Moonrise2")
+```
+
+## Principal Components Analysis
+
+```{r pca}
+#pca
+pch.gps <- c(15,17)[as.factor(raw$ColorGroup)]
+ColorGroup <- raw$ColorGroup
+
+## pca plot using correlation matrix
+pca <- autoplot(prcomp(raw[,c(5:12)], scale. = TRUE),
+                data = raw,
+                asp = 1,
+                shape = pch.gps,
+                colour = "ColorGroup",
+                loadings = TRUE, 
+                loadings.colour = 'blue',
+                loadings.label = TRUE,
+                loadings.label.size = 3,
+                frame = TRUE) +
+  geom_convexhull(alpha = 0.1, aes(fill = ColorGroup)) +
+  scale_fill_manual(values = pal) +
+  scale_colour_manual(values = pal)
+
+ggMarginal(pca, groupColour = TRUE)
+```
+
+```{r permanova}
+# perMANOVA
+gahagan.matrix <- as.matrix(raw[,c(5:12)]) # response vars
+gahagan.mat <- sqrt(gahagan.matrix) # sqrt transform
+gahagan.dist <- vegdist(gahagan.mat,
+                        method = 'bray') # dissimilarity matrix
+set.seed(10) # make results reproducible
+
+# model: gahagan raw material as a function of ColorGroup
+gahagan <- adonis2(gahagan.dist ~ ColorGroup,
+                   data = raw,
+                   permutations = 10000,
+                   method = 'bray')
+
+## does raw material differ by ColorGroup?
+gahagan
+```
