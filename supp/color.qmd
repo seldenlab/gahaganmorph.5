@@ -1,5 +1,5 @@
 ---
-title: "Color"
+title: "Raw Material Color Groups"
 ---
 
 Compare Gahagan biface color.
@@ -42,7 +42,7 @@ lab_hist_list <- colordistance::getLabHistList(image_paths,
 
 ## plot
 # Using earth mover distance
-EMD_CDM <- colordistance::getColorDistanceMatrix(lab_hist_list, 
+EMD_CDM <- colordistance::getColorDistanceMatrix(lab_hist_list,
                                                  method = 'emd')
 ```
 

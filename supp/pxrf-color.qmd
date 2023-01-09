@@ -1,5 +1,5 @@
 ---
-title: "Color ~ Geochemistry"
+title: "RMCG and Geochemistry"
 ---
 
 ```{r read}
@@ -27,11 +27,12 @@ pal <- wes_palette("Moonrise2")
 
 ```{r pca}
 #pca
+df <- data.frame(raw[,c(5:12)])
 pch.gps <- c(15,17)[as.factor(raw$ColorGroup)]
 ColorGroup <- raw$ColorGroup
 
 ## pca plot using correlation matrix
-pca <- autoplot(prcomp(raw[,c(5:12)], scale. = TRUE),
+pca <- autoplot(prcomp(df, scale. = TRUE),
                 data = raw,
                 asp = 1,
                 shape = pch.gps,
