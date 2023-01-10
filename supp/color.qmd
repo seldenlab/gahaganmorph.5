@@ -4,45 +4,25 @@ title: "Raw Material Color Groups"
 
 Compare Gahagan biface color.
 
-```{r color, out.width = "80%", dpi = 300, echo=TRUE, echo=TRUE, warning=FALSE, message=FALSE}
+```{r color, out.width = "100%", dpi = 300, echo=TRUE, eval=FALSE, warning=FALSE, message=FALSE}
 library(here)
 library(colordistance)
 
-# get image paths
-# convert from rgb to CIELab
-image_paths <- colordistance::getImagePaths('la.gahagan')
-
-H1 <- colordistance::loadImage(image_paths[38], 
-                               lower = rep(0.8, 3), 
-                               upper = rep(1, 3),
-                               CIELab = TRUE, 
-                               ref.white = "D65", 
-                               sample.size = 10000)
-
-# viz for CIELab col space
-colordistance::plotPixels(H1,
-                          lower = rep(0.8, 3), 
-                          upper = rep(1, 1), 
-                          color.space = "lab", 
-                          ref.white = "D65", 
-                          main = "CIELab color space",
-                          ylim = c(-100, 100), 
-                          zlim = c(0, 100))
+# get image paths + convert from rgb to CIELab
+image.paths <- colordistance::getImagePaths('la.gahagan')
 
 # CIELab clusters
-lab_hist_list <- colordistance::getLabHistList(image_paths, 
-                                               bins = 2,
+lab.hist.list <- colordistance::getLabHistList(image.paths,
+                                               bins = 4,
                                                bin.avg = TRUE,
-                                               sample.size = 10000,
-                                               ref.white = "D65", 
+                                               sample.size = 100000,
+                                               ref.white = 'D65', 
                                                lower = rep(0.8, 3), 
-                                               upper = rep(1, 3), 
-                                               pausing = FALSE)
-
+                                               upper = rep(1, 3))
 
 ## plot
-# Using earth mover distance
-EMD_CDM <- colordistance::getColorDistanceMatrix(lab_hist_list,
-                                                 method = 'emd')
+lab.dist.matrix <- colordistance::getColorDistanceMatrix(lab.hist.list,
+                                                         method = 'emd',
+                                                         plotting = TRUE)
 ```
 
