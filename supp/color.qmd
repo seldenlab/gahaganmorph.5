@@ -2,7 +2,7 @@
 title: "Raw Material Color Groups"
 ---
 
-Compare Gahagan biface color.
+Identify raw material color groups. The two largest groups articulate with grays and browns, and were not split further to avoid introducing/confounding raw material color variability associated with patination. 
 
 ```{r color, out.width = "100%", dpi = 300, echo=TRUE, eval=FALSE, warning=FALSE, message=FALSE}
 library(here)
