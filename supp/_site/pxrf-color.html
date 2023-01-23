@@ -234,7 +234,7 @@ This is vegan 2.6-4</code></pre>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wesanderson)</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">## load pXRF + qual.data----</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'pxrf1.csv'</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'qdata.csv'</span>,</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">as.is =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
@@ -245,8 +245,8 @@ This is vegan 2.6-4</code></pre>
 <h2 class="anchored" data-anchor-id="principal-components-analysis">Principal Components Analysis</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pca</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(raw[,<span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">12</span>)])</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>pch.gps <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">17</span>)[<span class="fu">as.factor</span>(raw<span class="sc">$</span>ColorGroup)]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(raw[,<span class="fu">c</span>(<span class="dv">9</span><span class="sc">:</span><span class="dv">16</span>)])</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>pch.gps <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">18</span>)[<span class="fu">as.factor</span>(raw<span class="sc">$</span>ColorGroup)]</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>ColorGroup <span class="ot">&lt;-</span> raw<span class="sc">$</span>ColorGroup</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="do">## pca plot using correlation matrix</span></span>
@@ -271,7 +271,7 @@ This is vegan 2.6-4</code></pre>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># perMANOVA</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>gahagan.matrix <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(raw[,<span class="fu">c</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">12</span>)]) <span class="co"># response vars</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>gahagan.matrix <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(raw[,<span class="fu">c</span>(<span class="dv">9</span><span class="sc">:</span><span class="dv">16</span>)]) <span class="co"># response vars</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>gahagan.mat <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(gahagan.matrix) <span class="co"># sqrt transform</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>gahagan.dist <span class="ot">&lt;-</span> <span class="fu">vegdist</span>(gahagan.mat,</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">method =</span> <span class="st">'bray'</span>) <span class="co"># dissimilarity matrix</span></span>
@@ -292,10 +292,10 @@ Permutation: free
 Number of permutations: 10000
 
 adonis2(formula = gahagan.dist ~ ColorGroup, data = raw, permutations = 10000, method = "bray")
-           Df SumOfSqs      R2      F Pr(&gt;F)  
-ColorGroup  1  0.03595 0.06712 2.8058 0.0253 *
-Residual   39  0.49969 0.93288                
-Total      40  0.53564 1.00000                
+           Df SumOfSqs     R2      F  Pr(&gt;F)  
+ColorGroup  1  0.02796 0.0522 2.1477 0.06379 .
+Residual   39  0.50768 0.9478                 
+Total      40  0.53564 1.0000                 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>

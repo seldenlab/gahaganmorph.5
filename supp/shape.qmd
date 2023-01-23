@@ -13,22 +13,9 @@ library(geomorph)
 library(wesanderson)
 
 ## load pXRF + qual.data----
-raw <- read.csv('pxrf1.csv',
+raw <- read.csv('qdata.csv',
                 header = TRUE,
                 as.is = TRUE)
-
-qual.data <- read.csv("qdata.raw.csv", 
-                      header = TRUE,
-                      as.is = TRUE)
-
-# join spreadsheets with qual.data on left
-qdata <- left_join(qual.data, raw,
-                   by = 'specimen')
-
-# output composite csv for GM analysis
-write.csv(qdata, 
-          file = 'qdata.csv', 
-          row.names = FALSE)
 
 ## load GM data----
 source('readmulti.csv.R')
@@ -54,7 +41,7 @@ Y.gpa <- gpagen(coords,
                 PrinAxes = TRUE,
                 print.progress = FALSE)
 ## plot gpa
-#plot(Y.gpa)
+plot(Y.gpa)
 
 # geomorph data frame
 gdf <- geomorph.data.frame(shape = Y.gpa$coords,
@@ -62,40 +49,16 @@ gdf <- geomorph.data.frame(shape = Y.gpa$coords,
                            color = qdata$ColorGroup) 
 ```
 
-## Boxplot
-
-```{r centsizeboxh2, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
-# palette
-pal <- wes_palette("Moonrise2")
-
-# add centroid size to qdata
-qdata$csz <- Y.gpa$Csize
-
-# attributes for boxplot
-csz <- qdata$csz
-color <- qdata$ColorGroup
-
-# boxplot - centroid size by color
-csz.temp <- ggplot(qdata, aes(x = color, y = csz, color = color)) +
-  geom_boxplot() +
-  geom_dotplot(binaxis = 'y', stackdir = 'center', dotsize = 0.3) +
-  scale_color_manual(values = pal) +
-  theme(legend.position = "none") +
-  labs(x = 'color', y = 'Centroid Size')
-
-## render plot
-csz.temp
-```
-
 ## Principal Components Analysis
 
 ```{r pca}
-# PCA----
+# palette
+pal <- wes_palette("Moonrise2")
 pca <- gm.prcomp(Y.gpa$coords)
 summary(pca)
 
 # set plot parameters to plot by context
-pch.gps <- c(15,17)[as.factor(qdata$ColorGroup)]
+pch.gps <- c(15,18)[as.factor(qdata$ColorGroup)]
 col.gps <- pal[as.factor(qdata$ColorGroup)]
 col.hull <- c("#C27D38","#798E87")
 
@@ -207,8 +170,9 @@ plot(mean$A)
 plot(mean$B)
 
 # comparison plots
-plotRefToTarget(mean$A,
-                mean$B, 
+plotRefToTarget(mean$B,
+                mean$A, 
                 method = "points",
-                mag = 1)
+                mag = 2)
+
 ```

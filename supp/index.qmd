@@ -38,6 +38,14 @@ knitr::include_graphics('img/map.png')
 knitr::include_graphics('img/gahagan.color.png')
 ```
 
+```{r colorspace, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Plot of distance matrix as a bivariate plot using non-metric multidimensional scaling, representing the distance matrix with a set of 2D coordinates."}
+knitr::include_graphics('img/colorspace.png')
+```
+
+```{r colortree, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Plot of images located at the tips of the hierarchical clustering tree shown on the top/left of heatmap above."}
+knitr::include_graphics('img/tree.png')
+```
+
 ### Geochemistry
 
 A Bruker Trace Vi handheld portable X-ray Fluorescence (pXRF) instrument was used to collect elemental data. The instrument was transported to the Williamson Museum and Louisiana State Exhibit Museum and set up in a nose-down configuration, where samples were raised into contact with the pXRF window using a pair of small jacks cushioned with fabric. Due to surface irregularities, the contact between the window and the bifaces was imperfect, resulting in variable count and response rates during data collection.

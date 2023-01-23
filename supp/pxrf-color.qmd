@@ -15,7 +15,7 @@ library(ggConvexHull)
 library(wesanderson)
 
 ## load pXRF + qual.data----
-raw <- read.csv('pxrf1.csv',
+raw <- read.csv('qdata.csv',
                 header = TRUE,
                 as.is = TRUE)
 
@@ -27,8 +27,8 @@ pal <- wes_palette("Moonrise2")
 
 ```{r pca}
 #pca
-df <- data.frame(raw[,c(5:12)])
-pch.gps <- c(15,17)[as.factor(raw$ColorGroup)]
+df <- data.frame(raw[,c(9:16)])
+pch.gps <- c(15,18)[as.factor(raw$ColorGroup)]
 ColorGroup <- raw$ColorGroup
 
 ## pca plot using correlation matrix
@@ -51,7 +51,7 @@ ggMarginal(pca, groupColour = TRUE)
 
 ```{r permanova}
 # perMANOVA
-gahagan.matrix <- as.matrix(raw[,c(5:12)]) # response vars
+gahagan.matrix <- as.matrix(raw[,c(9:16)]) # response vars
 gahagan.mat <- sqrt(gahagan.matrix) # sqrt transform
 gahagan.dist <- vegdist(gahagan.mat,
                         method = 'bray') # dissimilarity matrix
