@@ -1,5 +1,5 @@
 ---
-title: "An empirical assessment of biface morphology and geochemistry as a function of raw material color"
+title: "An empirical assessment of biface geochemistry and morphology as a function of raw material color"
 author:
   - name: Robert Z. Selden, Jr.
     affiliations:
@@ -20,7 +20,7 @@ description: Supplemental Materials
 
 # Basis of inquiry
 
-Archaeologists regularly assume that the physical properties of lithic raw materials are a determining factor in the morphology of stone tools; although, some have argued that this assumption warrants regular testing. Raw material nodule size and mechanical flaking properties are routinely advanced to account for morphological differences that occur between sites and assemblages. Color is often used as the determining characteristic of lithic raw material, and new analytical tools allow for an objective analysis of raw material color. Two raw material color groups were identified for Gahagan bifaces from the Gahagan Mound and Mounds Plantation sites in the American Southeast. This study asks whether Gahagan biface geochemistry and morphology differs as a function of raw material color group. Findings demonstrate that Gahagan bifaces differ significantly in morphology, but not geochemistry, by raw material color group. Thus, this study yields support for the argument that lithic morphology differs between raw material color groups, while supporting the argument against the general assumption of lithic morphology as a function of raw material. Given these findings, paired with the absence of local production evidence, it is posited that Gahagan bifaces from Caddo mortuary contexts at Gahagan Mound and Mounds Plantation were acquired through trade and/or exchange with producers that operated under similar constraints, and who manufactured Gahagan bifaces to be morphologically distinct when using raw material associated with specific color ranges.
+The physical characteristics of lithic raw materials are routinely advanced as a determining factor in the morphology of stone tools, where nodule size and mechanical flaking properties are generally assumed to account for morphological differences that occur between sites and assemblages. This study employs a quantitative analysis of raw material color to assign bifaces to distinct color groups, then asks whether the geochemistry and/or morphology of those bifaces can be said to differ. Color is often used as the determining characteristic in lithic raw material assignments, and new analytical tools allow for the objective and replicable analysis of raw material color. Two raw material color groups were identified for Gahagan bifaces from the Gahagan Mound and Mounds Plantation sites in the American Southeast. Findings demonstrate that Gahagan bifaces differ significantly in morphology, but not geochemistry, by raw material color group. Thus, this study yields support for the argument that lithic morphology differs between raw material color groups, supporting the interpretation that extralocal producers---and local Caddo users/knappers---conditioned Gahagan biface shape not upon nodule size or mechanical flaking properties, but on the basis of raw material color. Given these findings, paired with the absence of local production evidence, it is posited that Gahagan bifaces from Caddo mortuary contexts at Gahagan Mound and Mounds Plantation were acquired through trade and/or exchange with producers that operated under similar constraints, but who manufactured Gahagan bifaces to be morphologically distinct when using raw material associated with specific color ranges.
 
 ### Keywords
 
@@ -38,9 +38,13 @@ knitr::include_graphics('img/fig02.jpg')
 
 ### Color
 
+The Gahagan bifaces were scanned at 600 dpi using an HP ScanJet G4050. Images were subsequently transferred to a transparent background in Photoshop in preparation for analysis using the `colordistance` package in R [@R;@RN11200]. A histogram binning method was used to group similar colors, and pairwise distances between histograms were computed using earth mover’s distance, yielding two distinct raw material color groups [@RN11201].
+
 ```{r colorout, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Gahagan bifaces from Gahagan Mound and Mounds Plantation were used to identify color groups. In this graph, dark pink corresponds to bifaces that express the greatest differences in color, while those in blue correspond to bifaces with the greatest similarities. There is a fundamental difference between the two largest groups identified in the analysis, where one corresponds with tints of gray, and the other with tints of brown. By not splitting the clusters further, raw material color group assignments allow for shifts in patination."}
 knitr::include_graphics('img/gahagan.color.png')
 ```
+
+Bifaces were coded as ColorGroup A and ColorGroup B, then the color distance matrix was exported, joined with the qualitative data, then analyzed using a permutational multivariate analysis of variance (perMANOVA) in the `vegan` package [@R;@vegan], where the color groups were found to differ significantly (_permutations = 10,000; Rsq = 0.48746; **Pr(>F) = 9.999e-05**_). Ordination was performed using non-metric multidimensional scaling (NMDS) to illustrate the color ranges for Gahagan bifaces from ColorGroup A and ColorGroup B.
 
 ```{r colorspace, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="NMDS summarizing color variation in Gahagan bifaces, where ColorGroup A is depicted in gray, and the ColorGroup B is depicted in orange with each point plotted in color space to visualize color variation."}
 knitr::include_graphics('img/colorspace.png')
@@ -58,7 +62,7 @@ Elemental data were subsequently imported to R for a principal components analys
 knitr::include_graphics('img/pcaelem-1.png')
 ```
 
-The PCA illustrates 59.32 percent of the variation in the sample among PC1 (42.81 percent) and PC2 (16.51 percent). The perMANOVA demonstrated that elemental values differ significantly by raw material color groups (permutations = 10,000; Pr(>F) = 0.06379).
+The PCA illustrates 59.32 percent of the variation in the sample among PC1 (42.81 percent) and PC2 (16.51 percent). The perMANOVA demonstrated that elemental values differ significantly by raw material color groups (_permutations = 10,000; **Pr(>F) = 0.06379**_).
 
   -   Raw material color groups do not differ in geochemistry
   
@@ -72,7 +76,7 @@ Principal components analysis [@RN1746] was used to visualize shape variation am
 knitr::include_graphics('img/pcashape-1.png')
 ```
 
-To assess whether `shape` and `size` differs by `ColorGroup`, Procrustes ANOVAs [@RN1749] were run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions [@RN1756]. A residual randomization permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs [@RN1655;@RN11775], which has higher statistical power and a greater ability to identify patterns in the data should they be present [@RN1719]. An analysis of morphological disparity was used to identify potential differences in shape and size diversity between sites [@RN11107;@RN7041;@RN5694].
+To assess whether `shape` and `size` differs by `ColorGroup`, Procrustes ANOVAs [@RN1749] were run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions [@RN1756]. A residual randomization permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs [@RN1655;@RN11775], which has higher statistical power and a greater ability to identify patterns in the data should they be present [@RN1719].
 
   -   Gahgan biface shape _**differs significantly**_ by raw material color group
   -   Gahagan biface size does not differ by raw material color group

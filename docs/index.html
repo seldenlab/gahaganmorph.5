@@ -11,7 +11,7 @@
 <meta name="dcterms.date" content="2023-02-02">
 <meta name="description" content="Supplemental Materials">
 
-<title>An empirical assessment of biface morphology and geochemistry as a function of raw material color</title>
+<title>An empirical assessment of biface geochemistry and morphology as a function of raw material color</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -220,7 +220,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">An empirical assessment of biface morphology and geochemistry as a function of raw material color</h1>
+<h1 class="title">An empirical assessment of biface geochemistry and morphology as a function of raw material color</h1>
 </div>
 
 <div>
@@ -272,7 +272,7 @@ div.csl-indent {
 </blockquote>
 <section id="basis-of-inquiry" class="level1">
 <h1>Basis of inquiry</h1>
-<p>Archaeologists regularly assume that the physical properties of lithic raw materials are a determining factor in the morphology of stone tools; although, some have argued that this assumption warrants regular testing. Raw material nodule size and mechanical flaking properties are routinely advanced to account for morphological differences that occur between sites and assemblages. Color is often used as the determining characteristic of lithic raw material, and new analytical tools allow for an objective analysis of raw material color. Two raw material color groups were identified for Gahagan bifaces from the Gahagan Mound and Mounds Plantation sites in the American Southeast. This study asks whether Gahagan biface geochemistry and morphology differs as a function of raw material color group. Findings demonstrate that Gahagan bifaces differ significantly in morphology, but not geochemistry, by raw material color group. Thus, this study yields support for the argument that lithic morphology differs between raw material color groups, while supporting the argument against the general assumption of lithic morphology as a function of raw material. Given these findings, paired with the absence of local production evidence, it is posited that Gahagan bifaces from Caddo mortuary contexts at Gahagan Mound and Mounds Plantation were acquired through trade and/or exchange with producers that operated under similar constraints, and who manufactured Gahagan bifaces to be morphologically distinct when using raw material associated with specific color ranges.</p>
+<p>The physical characteristics of lithic raw materials are routinely advanced as a determining factor in the morphology of stone tools, where nodule size and mechanical flaking properties are generally assumed to account for morphological differences that occur between sites and assemblages. This study employs a quantitative analysis of raw material color to assign bifaces to distinct color groups, then asks whether the geochemistry and/or morphology of those bifaces can be said to differ. Color is often used as the determining characteristic in lithic raw material assignments, and new analytical tools allow for the objective and replicable analysis of raw material color. Two raw material color groups were identified for Gahagan bifaces from the Gahagan Mound and Mounds Plantation sites in the American Southeast. Findings demonstrate that Gahagan bifaces differ significantly in morphology, but not geochemistry, by raw material color group. Thus, this study yields support for the argument that lithic morphology differs between raw material color groups, supporting the interpretation that extralocal producers—and local Caddo users/knappers—conditioned Gahagan biface shape not upon nodule size or mechanical flaking properties, but on the basis of raw material color. Given these findings, paired with the absence of local production evidence, it is posited that Gahagan bifaces from Caddo mortuary contexts at Gahagan Mound and Mounds Plantation were acquired through trade and/or exchange with producers that operated under similar constraints, but who manufactured Gahagan bifaces to be morphologically distinct when using raw material associated with specific color ranges.</p>
 <section id="keywords" class="level3">
 <h3 class="anchored" data-anchor-id="keywords">Keywords</h3>
 <p><em>American Southeast, Caddo, NAGPRA, lithics, raw material color, pXRF, computational archaeology, anthroinformatics, archaeoinformatics, museum studies, digital humanities, non-Western art history, STEM, STEAM</em></p>
@@ -301,6 +301,7 @@ div.csl-indent {
 </div>
 <section id="color" class="level3">
 <h3 class="anchored" data-anchor-id="color">Color</h3>
+<p>The Gahagan bifaces were scanned at 600 dpi using an HP ScanJet G4050. Images were subsequently transferred to a transparent background in Photoshop in preparation for analysis using the <code>colordistance</code> package in R <span class="citation" data-cites="R RN11200">(<a href="#ref-R" role="doc-biblioref">R Core Development Team, 2022</a>; <a href="#ref-RN11200" role="doc-biblioref">Weller and Westneat 2019</a>)</span>. A histogram binning method was used to group similar colors, and pairwise distances between histograms were computed using earth mover’s distance, yielding two distinct raw material color groups <span class="citation" data-cites="RN11201">(<a href="#ref-RN11201" role="doc-biblioref">Rubner and Tomasi 2001</a>)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -311,6 +312,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
+<p>Bifaces were coded as ColorGroup A and ColorGroup B, then the color distance matrix was exported, joined with the qualitative data, then analyzed using a permutational multivariate analysis of variance (perMANOVA) in the <code>vegan</code> package <span class="citation" data-cites="R vegan">(<a href="#ref-R" role="doc-biblioref">R Core Development Team, 2022</a>; <a href="#ref-vegan" role="doc-biblioref">Oksanen et al. 2022</a>)</span>, where the color groups were found to differ significantly (<em>permutations = 10,000; Rsq = 0.48746; <strong>Pr(&gt;F) = 9.999e-05</strong></em>). Ordination was performed using non-metric multidimensional scaling (NMDS) to illustrate the color ranges for Gahagan bifaces from ColorGroup A and ColorGroup B.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -337,7 +339,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>The PCA illustrates 59.32 percent of the variation in the sample among PC1 (42.81 percent) and PC2 (16.51 percent). The perMANOVA demonstrated that elemental values differ significantly by raw material color groups (permutations = 10,000; Pr(&gt;F) = 0.06379).</p>
+<p>The PCA illustrates 59.32 percent of the variation in the sample among PC1 (42.81 percent) and PC2 (16.51 percent). The perMANOVA demonstrated that elemental values differ significantly by raw material color groups (<em>permutations = 10,000; <strong>Pr(&gt;F) = 0.06379</strong></em>).</p>
 <ul>
 <li>Raw material color groups do not differ in geochemistry</li>
 </ul>
@@ -356,7 +358,7 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>To assess whether <code>shape</code> and <code>size</code> differs by <code>ColorGroup</code>, Procrustes ANOVAs <span class="citation" data-cites="RN1749">(<a href="#ref-RN1749" role="doc-biblioref">Goodall 1991</a>)</span> were run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions <span class="citation" data-cites="RN1756">(<a href="#ref-RN1756" role="doc-biblioref">Collyer, Sekora, and Adams 2015</a>)</span>. A residual randomization permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs <span class="citation" data-cites="RN1655 RN11775">(<a href="#ref-RN1655" role="doc-biblioref">Adams and Collyer 2015</a>; <a href="#ref-RN11775" role="doc-biblioref">Collyer and Adams 2018</a>)</span>, which has higher statistical power and a greater ability to identify patterns in the data should they be present <span class="citation" data-cites="RN1719">(<a href="#ref-RN1719" role="doc-biblioref">Anderson and Ter Braak 2003</a>)</span>. An analysis of morphological disparity was used to identify potential differences in shape and size diversity between sites <span class="citation" data-cites="RN11107 RN7041 RN5694">(<a href="#ref-RN11107" role="doc-biblioref">Collyer and Adams 2020</a>; <a href="#ref-RN7041" role="doc-biblioref">Foote 1993</a>; <a href="#ref-RN5694" role="doc-biblioref">Zelditch et al. 2004</a>)</span>.</p>
+<p>To assess whether <code>shape</code> and <code>size</code> differs by <code>ColorGroup</code>, Procrustes ANOVAs <span class="citation" data-cites="RN1749">(<a href="#ref-RN1749" role="doc-biblioref">Goodall 1991</a>)</span> were run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions <span class="citation" data-cites="RN1756">(<a href="#ref-RN1756" role="doc-biblioref">Collyer, Sekora, and Adams 2015</a>)</span>. A residual randomization permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs <span class="citation" data-cites="RN1655 RN11775">(<a href="#ref-RN1655" role="doc-biblioref">Adams and Collyer 2015</a>; <a href="#ref-RN11775" role="doc-biblioref">Collyer and Adams 2018</a>)</span>, which has higher statistical power and a greater ability to identify patterns in the data should they be present <span class="citation" data-cites="RN1719">(<a href="#ref-RN1719" role="doc-biblioref">Anderson and Ter Braak 2003</a>)</span>.</p>
 <ul>
 <li>Gahgan biface shape <em><strong>differs significantly</strong></em> by raw material color group</li>
 <li>Gahagan biface size does not differ by raw material color group</li>
@@ -390,7 +392,7 @@ div.csl-indent {
 </section>
 <section id="colophon" class="level2">
 <h2 class="anchored" data-anchor-id="colophon">Colophon</h2>
-<p>This version of the analysis was generated on 2023-02-02 05:51:28 using the following computational environment and dependencies:</p>
+<p>This version of the analysis was generated on 2023-02-02 09:00:56 using the following computational environment and dependencies:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what R packages and versions were used?</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="st">"devtools"</span> <span class="sc">%in%</span> <span class="fu">installed.packages</span>()) devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -470,7 +472,7 @@ div.csl-indent {
 <div class="cell-output cell-output-stdout">
 <pre><code>Local:    main D:/github/gahaganmorph.5
 Remote:   main @ origin (https://github.com/seldenlab/gahaganmorph.5)
-Head:     [2241175] 2023-02-02: &lt;edit index&gt;</code></pre>
+Head:     [c646e87] 2023-02-02: &lt;edit index&gt;</code></pre>
 </div>
 </div>
 
@@ -513,9 +515,6 @@ Chapman, R. E. 1990. <span>“Conventional Procrustes Approaches.”</span> Book
 <div id="ref-RN11775" class="csl-entry" role="doc-biblioentry">
 Collyer, Michael L., and Dean C. Adams. 2018. <span>“<span class="nocase">RRPP: An R Package for Fitting Linear Models to High-Dimensional Data using Residual Randomization</span>.”</span> <em>Methods in Ecology and Evolution</em> 9 (7): 1772–79. https://doi.org/<a href="https://doi.org/10.1111/2041-210X.13029">https://doi.org/10.1111/2041-210X.13029</a>.
 </div>
-<div id="ref-RN11107" class="csl-entry" role="doc-biblioentry">
-———. 2020. <span>“Phylogenetically Aligned Component Analysis.”</span> Journal Article. <em>Methods in Ecology and Evolution</em> 12 (2): 359–72. <a href="https://doi.org/10.1111/2041-210x.13515">https://doi.org/10.1111/2041-210x.13515</a>.
-</div>
 <div id="ref-RN1756" class="csl-entry" role="doc-biblioentry">
 Collyer, Michael L., David J. Sekora, and Dean C. Adams. 2015. <span>“<span class="nocase">A Method for Analysis of Phenotypic Change for Phenotypes Described by High-Dimensional Data</span>.”</span> <em>Heredity</em> 115 (4): 357–65. <a href="https://doi.org/10.1038/hdy.2014.75">https://doi.org/10.1038/hdy.2014.75</a>.
 </div>
@@ -524,9 +523,6 @@ Dryden, I. L., and K. V. Mardia. 1993. <span>“Multivariate Shape Analysis.”<
 </div>
 <div id="ref-RN11140" class="csl-entry" role="doc-biblioentry">
 ———. 1998. <em>Statistical Shape Analysis</em>. Book. Chichester: Wiley.
-</div>
-<div id="ref-RN7041" class="csl-entry" role="doc-biblioentry">
-Foote, M. 1993. <span>“Contributions of Individual Taxa to Overall Morphological Disparity.”</span> Journal Article. <em>Paleobiology</em> 19 (4): 403–19.
 </div>
 <div id="ref-RN20917" class="csl-entry" role="doc-biblioentry">
 Gandrud, Christopher. 2014. <em>Reproducible Research with r and RStudio</em>. The r Series. London: CRC Press.
@@ -570,11 +566,17 @@ Marwick, Ben, Li-Ying Wang, Ryan Robinson, and Hope Loiselle. 2019. <span>“How
 <div id="ref-RN11143" class="csl-entry" role="doc-biblioentry">
 O’Higgins, Paul, and Nicholas Jones. 1998. <span>“Facial Growth in Cercocbus Torquatus: An Application of Three-Dimensional Geometric Morphometric Techniques to the Study of Morphological Variation.”</span> Journal Article. <em>The Journal of Anatomy</em> 193 (2): 251–72.
 </div>
+<div id="ref-vegan" class="csl-entry" role="doc-biblioentry">
+Oksanen, Jari, Gavin L. Simpson, F. Guillaume Blanchet, Roeland Kindt, Pierre Legendre, Peter R. Minchin, R. B. O’Hara, et al. 2022. <em>Vegan: Community Ecology Package</em>. <a href="https://CRAN.R-project.org/package=vegan">https://CRAN.R-project.org/package=vegan</a>.
+</div>
 <div id="ref-RN21008" class="csl-entry" role="doc-biblioentry">
 Peels, Rik, and Lex Bouter. 2018. <span>“Humanities Need a Replication Drive Too.”</span> <em>Nature</em> 558 (7710): 372. <a href="https://doi.org/10.1038/d41586-018-05454-w">https://doi.org/10.1038/d41586-018-05454-w</a>.
 </div>
 <div id="ref-RN20916" class="csl-entry" role="doc-biblioentry">
 Peng, Roger D. 2011. <span>“Reproducible Research in Computational Science.”</span> <em>Science</em> 334 (6060): 1226–27. <a href="https://doi.org/10.1126/science.1213847">https://doi.org/10.1126/science.1213847</a>.
+</div>
+<div id="ref-R" class="csl-entry" role="doc-biblioentry">
+R Core Development Team,. 2022. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="http://www.R-project.org/">http://www.R-project.org/</a>.
 </div>
 <div id="ref-RN1646" class="csl-entry" role="doc-biblioentry">
 Rohlf, F. James. 1999. <span>“<span class="nocase">Shape Statistics: Procrustes Superimpositions and Tangent Spaces</span>.”</span> <em>Journal of Classification</em> 16 (2): 197–223. <a href="https://doi.org/10.1007/s003579900054">https://doi.org/10.1007/s003579900054</a>.
@@ -584,6 +586,9 @@ Rohlf, F. James, and Leslie F. Marcus. 1993. <span>“A Revolution in Morphometr
 </div>
 <div id="ref-RN478" class="csl-entry" role="doc-biblioentry">
 Rohlf, F. James, and Dennis Slice. 1990. <span>“<span class="nocase">Extensions of the Procrustes Method for the Optimal Superimposition of Landmarks</span>.”</span> <em>Systematic Zoology</em> 39 (1): 40–59. <a href="https://doi.org/10.2307/2992207">https://doi.org/10.2307/2992207</a>.
+</div>
+<div id="ref-RN11201" class="csl-entry" role="doc-biblioentry">
+Rubner, Yossi, and Carlo Tomasi. 2001. <em>Perceptual Metrics for Image Database Navigation</em>. Book. London: Springer Science &amp; Business Media.
 </div>
 <div id="ref-RN8980" class="csl-entry" role="doc-biblioentry">
 Selden Jr., Robert Z., John E. Dockall, C. Britt Bousman, and Timothy K. Perttula. 2021. <span>“<span class="nocase">Supplementary materials for paper: Shape as a function of time + raw material + burial context? A preliminary analysis of Perdiz arrow points in the southern Caddo area</span>.”</span> Journal Article. <em>Open Science Framework</em>. <a href="https://doi.org/10.17605/OSF.IO/DEJ74">https://doi.org/10.17605/OSF.IO/DEJ74</a>.
@@ -600,8 +605,8 @@ Sherratt, Emma, David J. Gower, Christian Peter Klingenberg, and Mark Wilkinson.
 <div id="ref-RN11563" class="csl-entry" role="doc-biblioentry">
 Slice, Dennis E. 2001. <span>“<span class="nocase">Landmark Coordinates Aligned by Procrustes Analysis Do Not Lie in Kendall’s Shape Space</span>.”</span> <em>Systematic Biology</em> 50 (1): 141–49. <a href="https://doi.org/10.1080/10635150119110">https://doi.org/10.1080/10635150119110</a>.
 </div>
-<div id="ref-RN5694" class="csl-entry" role="doc-biblioentry">
-Zelditch, Miriam Leah, Donald L. Swiderski, H. David Sheets, and William L. Fink. 2004. <em>Geometric Morphometrics for Biologists : A Primer</em>. Book. Burlington: Elsevier Science. <a href="http://ebookcentral.proquest.com/lib/tamucs/detail.action?docID=298308">http://ebookcentral.proquest.com/lib/tamucs/detail.action?docID=298308</a>.
+<div id="ref-RN11200" class="csl-entry" role="doc-biblioentry">
+Weller, Hannah I., and Mark W. Westneat. 2019. <span>“Quantitative Color Profiling of Digital Images with Earth Mover’s Distance Using the r Package Colordistance.”</span> Journal Article. <em>PeerJ</em> 7: e6398. <a href="https://doi.org/10.7717/peerj.6398">https://doi.org/10.7717/peerj.6398</a>.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
