@@ -127,12 +127,6 @@ cor <- two.b.pls(A1 = Y.gpa$coords,
 
 # is shape correlated with raw material?
 summary(cor)
-
-## plot PLS
-plot(cor, 
-     pch = pch.gps, 
-     col = col.gps,
-     cex = 0.9)
 ```
 
 ## 2B-PLS: Size
@@ -148,12 +142,6 @@ cor <- two.b.pls(A1 = Y.gpa$Csize,
 
 # is size correlated with raw material?
 summary(cor)
-
-## plot PLS
-plot(cor, 
-     pch = pch.gps, 
-     col = col.gps,
-     cex = 0.9)
 ```
 
 ## Mean shapes
@@ -175,4 +163,5 @@ plotRefToTarget(mean$B,
                 method = "points",
                 mag = 2)
 
+knitr::include_graphics('img/fig5.jpg')
 ```

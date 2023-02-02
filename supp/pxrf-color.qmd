@@ -63,6 +63,6 @@ gahagan <- adonis2(gahagan.dist ~ ColorGroup,
                    permutations = 10000,
                    method = 'bray')
 
-## does raw material differ by ColorGroup?
+## does raw material geochemistry differ by ColorGroup?
 gahagan
 ```

@@ -5,6 +5,7 @@ title: "Raw Material Color Groups"
 ```{r color, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE, message=FALSE}
 # compare colors
 library(here)
+library(tidyverse)
 library(colordistance)
 library(recolorize)
 library(vegan)
@@ -15,9 +16,44 @@ images <- colordistance::getImagePaths('la.gahagan')
 
 # generate color distance matrix
 cdm <- imageClusterPipeline(images)
+
+# replace NAs with 0
+cdm[is.na(cdm)] = 0
+# export color distance matrix
+write.csv(cdm, file = "distance_matrix.csv")
 ```
 
-Plot distance matrix as bivariate plot using non-metric multidimensional scaling.
+# Permutational MANOVA
+
+```{r permanovacolor}
+# import color distance matrix
+c.data <- read.csv("distance_matrix.csv",
+                   header = TRUE,
+                   as.is=TRUE)
+
+# import qual data
+g.data <- read.csv("qdatacol.csv",
+                   header = TRUE,
+                   as.is=TRUE) %>% 
+  select(specimen, ColorGroup)
+
+# preliminaries
+colnames(g.data) <- c('X','ColorGroup') # rename columns prior to join
+gahagan <- left_join(g.data, c.data, by = "X") # left join by specimen number
+gahagan.dist <- gahagan[,3:41] # color distance matrix
+set.seed(10) # make results reproducible
+
+# model: biface color as a function of Caddo behavioral region
+gahagan.colour <- adonis2(gahagan.dist ~ ColorGroup,
+                          data = gahagan,
+                          permutations = 10000,
+                          method = 'bray')
+
+## does color differ by behavioral region?
+gahagan.colour
+```
+
+# Ordination + visualization
 
 ```{r colorspaceplot, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE, message=FALSE}
 # define add_image function:
@@ -55,9 +91,18 @@ nmds_scores <- scores(metaMDS(comm = as.dist(cdm)))
 # set plot parameters
 plot(nmds_scores,
      xlim = c(-0.45, 0.4),
-     ylim = c(-0.1, 0.13),
+     ylim = c(-0.11, 0.13),
      cex = 0.001
      )
+
+#Create convex hulls that highlight behavioral regions
+ordihull(
+  nmds_scores,
+  g.data$ColorGroup,
+  draw = c("polygon"),
+  col = NULL,
+  border = c("#798E87","#C27D38")
+)
 
 # add images
 for (i in 1:length(images)) {
@@ -73,58 +118,3 @@ for (i in 1:length(images)) {
 }
 ```
 
-Plot images at tips of the hierarchical clustering tree shown on the top/left of heatmap.
-
-```{r tree, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE, message=FALSE}
-# neighbor-joining tree
-tree <- nj(as.dist(cdm))
-# plot tree
-plot(tree,
-     show.tip.label = FALSE,
-     direction = "upward")
-
-# get parameters from plotting environment
-lastPP <- get("last_plot.phylo", 
-              envir = .PlotPhyloEnv)
-
-# get xy coordinates of tips
-ntip <- lastPP$Ntip
-
-# first n values are tips/remaining values are node coordinates
-xy <- data.frame(x = lastPP$xx[1:ntip],
-                 y = lastPP$yy[1:ntip]) 
-
-# add points
-points(xy[ , 1], xy[ , 2], 
-       col = viridisLite::viridis(40), 
-       pch = 19, cex = 2)
-
-# get image names
-imnames <- tools::file_path_sans_ext(basename(images))
-
-# get tip labels
-tipnames <- tree$tip.label
-
-# check that images are in correct order:
-image_order <- match(tipnames, imnames)
-images <- images[image_order]
-
-## final plot
-par(mar = rep(0, 4))
-plot(tree, show.tip.label = FALSE, direction = "upward")
-
-# parameters from plotting environment
-lastPP <- get("last_plot.phylo", envir = .PlotPhyloEnv)
-
-# xy coordinates of tips
-ntip <- lastPP$Ntip
-xy <- data.frame(x = lastPP$xx[1:ntip],
-                 y = lastPP$yy[1:ntip]) 
-
-for (i in 1:length(images)) {
-  add_image(png::readPNG(images[i]),
-            x = xy[i, 1],
-            y = xy[i, 2], 
-            width = 0.75)
-}
-```
