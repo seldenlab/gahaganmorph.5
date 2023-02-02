@@ -1,5 +1,5 @@
 ---
-title: "Raw material color, geochemistry, and morphometrics: An empirical assessment of Gahagan biface morphology as a function of raw material"
+title: "An empirical assessment of biface morphology and geochemistry as a function of raw material color"
 author:
   - name: Robert Z. Selden, Jr.
     affiliations:
