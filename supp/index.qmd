@@ -32,13 +32,17 @@ _American Southeast, Caddo, NAGPRA, lithics, raw material color, pXRF, computati
 knitr::include_graphics('img/map.png')
 ```
 
+```{r figbifaces, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Gahagan bifaces from Caddo burial contexts at Gahagan Mound and Mounds Plantation."}
+knitr::include_graphics('img/fig02.jpg')
+```
+
 ### Color
 
 ```{r colorout, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Gahagan bifaces from Gahagan Mound and Mounds Plantation were used to identify color groups. In this graph, dark pink corresponds to bifaces that express the greatest differences in color, while those in blue correspond to bifaces with the greatest similarities. There is a fundamental difference between the two largest groups identified in the analysis, where one corresponds with tints of gray, and the other with tints of brown. By not splitting the clusters further, raw material color group assignments allow for shifts in patination."}
 knitr::include_graphics('img/gahagan.color.png')
 ```
 
-```{r colorspace, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Plot of distance matrix as a bivariate plot using non-metric multidimensional scaling, representing the distance matrix with a set of 2D coordinates."}
+```{r colorspace, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="NMDS summarizing color variation in Gahagan bifaces, where ColorGroup A is depicted in gray, and the ColorGroup B is depicted in orange with each point plotted in color space to visualize color variation."}
 knitr::include_graphics('img/colorspace.png')
 ```
 
@@ -89,7 +93,7 @@ Components of the analytical workflow were developed and funded by a Preservatio
 
 ## Data management
 
-All data and analysis code associated with this project are openly available through the [GitHub](https://github.com/seldenlab/gahaganmorph.5) repository, which is digitally curated on the Open Science Framework ([DOI 10.17605/OSF.IO/3JB94](https://osf.io/3jb94/)). Images of all Gahagan bifaces used in this study are openly available to view/download in an open access comparative collection ([https://scholarworks.sfasu.edu/ita-gahaganbiface/](https://scholarworks.sfasu.edu/ita-gahaganbiface/)), with permission from the Caddo Nation of Oklahoma. These supplementary materials include all analysis data and code used in the study, providing a means for others to reproduce (exactly) those results discussed and expounded upon in this article. The replicable nature of this undertaking provides others with the means to critically assess and evaluate the various analytical components of this study [@RN20915;@RN20916;@RN20917], which is a necessary requirement for the production of reliable knowledge. 
+All data and analysis code associated with this project are openly available through the [GitHub](https://github.com/seldenlab/gahaganmorph.5) repository, which is digitally curated on the Open Science Framework ([DOI 10.17605/OSF.IO/3JB94](https://osf.io/3jb94/)). Additionally, images of all Gahagan bifaces used in this study are openly available to view/download through an open access comparative collection ([https://scholarworks.sfasu.edu/ita-gahaganbiface/](https://scholarworks.sfasu.edu/ita-gahaganbiface/)). The supplementary materials include all analysis data and code used in the study, providing a means for others to reproduce (exactly) those results discussed and expounded upon in this article. The replicable nature of this undertaking provides others with the means to critically assess and evaluate the various analytical components of this study [@RN20915;@RN20916;@RN20917], which is a necessary requirement for the production of reliable knowledge. 
 
 Reproducibility projects in [psychology](https://osf.io/ezcuj/) and [cancer biology](https://www.cos.io/rpcb) are impacting current research practices across all domains. Examples of reproducible research are becoming more abundant in archaeology [@RN20804;@RN21009;@RN8322;@RN8980;@RN11097], and the next generation of archaeologists are learning those tools and methods needed to reproduce and/or replicate research results [@RN21007]. Reproducible and replicable research work flows are often employed at the highest levels of humanities-based inquiries to mitigate concern or doubt regarding proper execution, and is of particular import should the results have—explicitly or implicitly—a major impact on scientific progress [@RN21008].
 
