@@ -6,6 +6,7 @@ title: "RMCG and Geochemistry"
 ## load packages
 library(here)
 library(tidyverse)
+library(tidyr)
 library(vegan)
 library(ggpubr)
 library(ggfortify)
@@ -49,7 +50,7 @@ pca <- autoplot(prcomp(df, scale. = TRUE),
 ggMarginal(pca, groupColour = TRUE)
 ```
 
-```{r permanova}
+```{r permanova general}
 # perMANOVA
 gahagan.matrix <- as.matrix(raw[,c(5:11)]) # response vars
 gahagan.mat <- sqrt(gahagan.matrix) # sqrt transform

@@ -1,0 +1,180 @@
+---
+title: "RMCG and Morphology"
+---
+
+```{r load}
+# shape/size ~ raw material?
+
+# load----
+## load packages
+library(here)
+library(tidyverse)
+library(geomorph)
+library(wesanderson)
+
+## load pXRF + qual.data----
+raw <- read.csv('qdata.csv',
+                header = TRUE,
+                as.is = TRUE)
+
+## load GM data----
+source('readmulti.csv.R')
+
+# read .csv files
+setwd("./data")
+filelist <- list.files(pattern = ".csv")
+coords <- readmulti.csv(filelist)
+setwd("../")
+
+# read qualitative data
+qdata <- read.csv("qdata.csv", 
+                  header = TRUE, 
+                  row.names = 1)
+qdata <- qdata[match(dimnames(coords)[[3]], rownames(qdata)),]
+```
+
+
+## Generalised Procrustes Analysis
+
+
+```{r gpa}
+# GPA----
+Y.gpa <- gpagen(coords,
+                PrinAxes = TRUE,
+                print.progress = FALSE)
+## plot gpa
+plot(Y.gpa)
+
+# geomorph data frame
+gdf <- geomorph.data.frame(shape = Y.gpa$coords,
+                           size = Y.gpa$Csize,
+                           color = qdata$ColorGroup) 
+```
+
+
+## Principal Components Analysis
+
+
+```{r pca}
+# palette
+pal <- wes_palette("Moonrise2")
+pca <- gm.prcomp(Y.gpa$coords)
+summary(pca)
+
+# set plot parameters to plot by context
+pch.gps <- c(15,18)[as.factor(qdata$ColorGroup)]
+col.gps <- pal[as.factor(qdata$ColorGroup)]
+col.hull <- c("#C27D38","#798E87")
+
+## plot pca----
+pc.plot <- plot(pca, asp = 1,
+                pch = pch.gps,
+                col = col.gps)
+shapeHulls(pc.plot,
+           groups = qdata$ColorGroup,
+           group.cols = col.hull)
+
+# plot x/y maxima/minima
+# x - minima
+mean.shape <- mshape(Y.gpa$coords)
+plotRefToTarget(pca$shapes$shapes.comp1$min, 
+                mean.shape)
+# x - maxima
+plotRefToTarget(pca$shapes$shapes.comp1$max, 
+                mean.shape)
+
+# y - minima
+plotRefToTarget(pca$shapes$shapes.comp2$min, 
+                mean.shape)
+
+# y - maxima
+plotRefToTarget(pca$shapes$shapes.comp2$max, 
+                mean.shape)
+```
+
+
+## Procrustes ANOVA
+
+
+```{r define-models.h2}
+# MODEL: shape as a function of color
+fit.shape <- procD.lm(shape ~ color,
+                      data = gdf,
+                      print.progress = FALSE,
+                      iter = 9999)
+
+# ANOVA: do gahagan biface shapes differ by color?
+anova(fit.shape)
+
+# MODEL: size as a function of color
+fit.size <- procD.lm(size ~ color,
+                     data = gdf,
+                     print.progress = FALSE,
+                     iter = 9999)
+
+# ANOVA: do gahagan biface sizes differ by color?
+anova(fit.size)
+```
+
+
+## 2B-PLS: Shape
+
+
+```{r plsshape}
+# 2B-PLS----
+# elemental data
+elemental <- qdata %>%
+  select(c(Al.K12:Zn.K12))
+
+## shape/elemental----
+# 2B-PLS (elemental) [shape/elemental]
+cor <- two.b.pls(A1 = Y.gpa$coords,
+                 A2 = elemental,
+                 print.progress = FALSE,
+                 iter = 9999)
+
+# is shape correlated with raw material?
+summary(cor)
+```
+
+
+## 2B-PLS: Size
+
+
+```{r plssize}
+# 2B-PLS----
+## size/elemental----
+# 2B-PLS (elemental) [size/elemental]
+cor <- two.b.pls(A1 = Y.gpa$Csize,
+                 A2 = elemental,
+                 print.progress = FALSE,
+                 iter = 9999)
+
+# is size correlated with raw material?
+summary(cor)
+```
+
+
+## Mean shapes
+
+
+```{r mshape, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE}
+# subset landmark coordinates to produce mean shapes for contexts
+new.coords <- coords.subset(A = Y.gpa$coords,
+                            group = qdata$ColorGroup)
+names(new.coords)
+
+## plot shape means
+mean <- lapply(new.coords, mshape)
+plot(mean$A)
+plot(mean$B)
+
+# comparison plots
+plotRefToTarget(mean$B,
+                mean$A, 
+                method = "points",
+                mag = 2)
+
+knitr::include_graphics('img/fig5.jpg')
+```
+
