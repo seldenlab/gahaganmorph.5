@@ -40,7 +40,7 @@ knitr::include_graphics('img/fig02.jpg')
 
 Gahagan bifaces were scanned at 600 dpi using an HP ScanJet G4050. Images were subsequently transferred to a transparent background in Photoshop in preparation for analysis using the `colordistance` package in R [@R;@RN11200]. A histogram binning method was used to group similar colors, and pairwise distances between histograms were computed using earth mover’s distance, yielding two distinct raw material color groups [@RN11201;@RN11200].
 
-```{r colorout, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Color binning process for a single object; adapted from Weller and Westneat (2019:Figure 2). In a, image of a Smithport Plain bottle with a transparent background; b, 3D scatterplot of 10,000 non-background pixels in RGB color space; c, clusters from histogram displayed in RGB color space; and d, histogram showing the proportion of non-background pixels assigned to each bin."}
+```{r colorout, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Color binning process for a single object; adapted from Weller and Westneat (2019:Figure 2). In a, image of a Gahagan biface with a transparent background; b, 3D scatterplot of 10,000 non-background pixels in RGB color space; c, clusters from histogram displayed in RGB color space; and d, histogram showing the proportion of non-background pixels assigned to each bin."}
 knitr::include_graphics('img/fig3.png')
 ```
 
