@@ -20,7 +20,7 @@ description: Supplemental Materials
 
 # Basis of inquiry
 
-Nodule size and mechanical flaking properties have routinely been advanced to account for morphological differences between sites and assemblages that occur in areas rich in raw material. However, in instances where lithic raw material was scarce, did Caddo traders from different sites interact with brokers from common extralocal communities associated with lithic abundance? Gahagan bifaces are among those implements most diagnostic of Formative/Early Caddo material culture assemblages; however, due to a lack of local production evidence, it is also widely accepted that Gahagan bifaces were not produced by the Caddo. This study asks whether Caddo traders from Gahagan Mound and Mounds Plantation may have engaged in commerce with brokers from common extralocal communities. Results demonstrate that two distinct raw materials were used in the production of Gahagan bifaces. Thus, it is posited that Gahagan bifaces from Caddo mortuary contexts at Gahagan Mound and Mounds Plantation were acquired through trade with two or more producers operating under similar cultural constraints, who manufactured Gahagan bifaces that were distinct in color, geochemistry, and shape.
+Nodule size and mechanical flaking properties have routinely been advanced to account for morphological differences between sites and assemblages that occur in areas where raw material is abundant. However, in instances where lithic raw materials---larger nodules in particular---were scarce, did traders from different sites interact with brokers from common extralocal communities who produced large bifaces that generally conformed to local cultural constraints? Gahagan bifaces are among those implements most diagnostic of Formative/Early Caddo material culture assemblages (CE 800 - 1250); although, due to a lack of local production evidence, it is also widely accepted that Gahagan bifaces were not produced by the Caddo. This study asks whether Caddo traders from Gahagan Mound and Mounds Plantation may have engaged in commerce with brokers from common extralocal communities to acquire Gahagan bifaces. Results demonstrate Gahagan biface geochemistry and shape to be distinct based on color group assignment. Thus, it is posited that Gahagan bifaces from Caddo mortuary contexts at Gahagan Mound and Mounds Plantation were acquired through trade with two or more non-local communities, who produced Gahagan bifaces distinct in raw material color, geochemistry, and shape.
 
 ### Keywords
 
@@ -40,14 +40,14 @@ knitr::include_graphics('img/fig02.jpg')
 
 Gahagan bifaces were scanned at 600 dpi using an HP ScanJet G4050. Images were subsequently transferred to a transparent background in Photoshop in preparation for analysis using the `colordistance` package in R [@R;@RN11200]. A histogram binning method was used to group similar colors, and pairwise distances between histograms were computed using earth mover’s distance, yielding two distinct raw material color groups [@RN11201;@RN11200].
 
-```{r colorout, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Gahagan bifaces from Gahagan Mound and Mounds Plantation were used to identify color groups. In this graph, dark pink corresponds to bifaces that express the greatest differences in color, while those in blue correspond to bifaces with the greatest similarities. There is a fundamental difference between the two largest groups identified in the analysis, where one corresponds with tints of gray, and the other with tints of brown. By not splitting the clusters further, raw material color group assignments allow for shifts in patination."}
-knitr::include_graphics('img/gahagan.color.png')
+```{r colorout, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Color binning process for a single object; adapted from Weller and Westneat (2019:Figure 2). In a, image of a Smithport Plain bottle with a transparent background; b, 3D scatterplot of 10,000 non-background pixels in RGB color space; c, clusters from histogram displayed in RGB color space; and d, histogram showing the proportion of non-background pixels assigned to each bin."}
+knitr::include_graphics('img/fig3.png')
 ```
 
 Bifaces were coded as ColorGroup A and ColorGroup B using the output from a neighbor-joining tree, calculated using the color distance matrix. To test whether bifaces differ in color according to ColorGroup assignment, the color distance matrix was exported and joined with the categorical data. Those data were used in a permutational multivariate analysis of variance in the `vegan` package to evaluate whether biface color differs by raw material color group [@R;@vegan], where the two raw material color groups were found to differ significantly (_permutations = 10,000; **Pr(>F) = 9.999e-05**_).
 
 ```{r colorspace, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Neighbor-joining tree illustrating color data for the two Gahagan biface ColorGroups; ColorGroup B (left) and ColorGroup A (right)."}
-knitr::include_graphics('img/cielab.png')
+knitr::include_graphics('img/fig4.png')
 ```
 
 ### Geochemistry
@@ -66,7 +66,7 @@ The PCA illustrates 59.97 percent of the variation in the sample among PC1 (42.5
 
   -   Raw material color groups **differ significantly** in geochemistry
   
-### Geometric morphometrics
+### 3D geometric morphometrics
 
 Landmark data were aligned to a global coordinate system [@RN8477;@RN7502;@RN11622;@RN11623;@RN11563], achieved through generalized Procrustes superimposition [@RN11138;@RN478;@RN1646] in R using the `geomorph` and `RRPP` packages [@RN1655;@RN11775;@RN11530;@RN1774;@RN9565]. Procrustes superimposition translates and rotates the coordinate data to allow for comparisons among objects, while also scaling each biface using unit-centroid size---the square root of the sum of squared distances from each landmark to the specimen’s centroid [@RN11139;@RN11140;@RN11564;@RN478]. The `geomorph` package uses a partial Procrustes superimposition that projects the aligned specimens into tangent space subsequent to alignment in preparation for the use of multivariate methods that assume linear space [@RN11141;@RN11142;@RN1646;@RN11563].
 
