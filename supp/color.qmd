@@ -95,7 +95,7 @@ rownames(c.data2) <- colnames(c.data2)
 
 ## Neighbor-joining tree
 
-```{r}
+```{r njtree, echo = TRUE, warning=FALSE, message=FALSE}
 # define add_image function ----
 add_image <- function(obj,
                       x = NULL,
@@ -141,12 +141,7 @@ ntip <- lastPP$Ntip
 
 # first n values are tips/remaining values are node coordinates
 xy <- data.frame(x = lastPP$xx[1:ntip],
-                 y = lastPP$yy[1:ntip]) 
-
-# add points
-points(xy[ , 1], xy[ , 2], 
-       col = viridisLite::viridis(40), 
-       pch = 19, cex = 2)
+                 y = lastPP$yy[1:ntip])
 
 # get image names
 imnames <- tools::file_path_sans_ext(basename(images))

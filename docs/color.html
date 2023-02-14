@@ -673,78 +673,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb45-43"><a href="#cb45-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-44"><a href="#cb45-44" aria-hidden="true" tabindex="-1"></a><span class="co"># first n values are tips/remaining values are node coordinates</span></span>
 <span id="cb45-45"><a href="#cb45-45" aria-hidden="true" tabindex="-1"></a>xy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> lastPP<span class="sc">$</span>xx[<span class="dv">1</span><span class="sc">:</span>ntip],</span>
-<span id="cb45-46"><a href="#cb45-46" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> lastPP<span class="sc">$</span>yy[<span class="dv">1</span><span class="sc">:</span>ntip]) </span>
+<span id="cb45-46"><a href="#cb45-46" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> lastPP<span class="sc">$</span>yy[<span class="dv">1</span><span class="sc">:</span>ntip])</span>
 <span id="cb45-47"><a href="#cb45-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-48"><a href="#cb45-48" aria-hidden="true" tabindex="-1"></a><span class="co"># add points</span></span>
-<span id="cb45-49"><a href="#cb45-49" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(xy[ , <span class="dv">1</span>], xy[ , <span class="dv">2</span>], </span>
-<span id="cb45-50"><a href="#cb45-50" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> viridisLite<span class="sc">::</span><span class="fu">viridis</span>(<span class="dv">40</span>), </span>
-<span id="cb45-51"><a href="#cb45-51" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-48"><a href="#cb45-48" aria-hidden="true" tabindex="-1"></a><span class="co"># get image names</span></span>
+<span id="cb45-49"><a href="#cb45-49" aria-hidden="true" tabindex="-1"></a>imnames <span class="ot">&lt;-</span> tools<span class="sc">::</span><span class="fu">file_path_sans_ext</span>(<span class="fu">basename</span>(images))</span>
+<span id="cb45-50"><a href="#cb45-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-51"><a href="#cb45-51" aria-hidden="true" tabindex="-1"></a><span class="co"># get tip labels</span></span>
+<span id="cb45-52"><a href="#cb45-52" aria-hidden="true" tabindex="-1"></a>tipnames <span class="ot">&lt;-</span> tree<span class="sc">$</span>tip.label</span>
+<span id="cb45-53"><a href="#cb45-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-54"><a href="#cb45-54" aria-hidden="true" tabindex="-1"></a><span class="co"># check that images are in correct order:</span></span>
+<span id="cb45-55"><a href="#cb45-55" aria-hidden="true" tabindex="-1"></a>image_order <span class="ot">&lt;-</span> <span class="fu">match</span>(tipnames, imnames)</span>
+<span id="cb45-56"><a href="#cb45-56" aria-hidden="true" tabindex="-1"></a>images <span class="ot">&lt;-</span> images[image_order]</span>
+<span id="cb45-57"><a href="#cb45-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-58"><a href="#cb45-58" aria-hidden="true" tabindex="-1"></a><span class="do">## final plot</span></span>
+<span id="cb45-59"><a href="#cb45-59" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">4</span>))</span>
+<span id="cb45-60"><a href="#cb45-60" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tree, </span>
+<span id="cb45-61"><a href="#cb45-61" aria-hidden="true" tabindex="-1"></a>     <span class="at">show.tip.label =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb45-62"><a href="#cb45-62" aria-hidden="true" tabindex="-1"></a>     <span class="at">direction =</span> <span class="st">"upward"</span>)</span>
+<span id="cb45-63"><a href="#cb45-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-64"><a href="#cb45-64" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters from plotting environment</span></span>
+<span id="cb45-65"><a href="#cb45-65" aria-hidden="true" tabindex="-1"></a>lastPP <span class="ot">&lt;-</span> <span class="fu">get</span>(<span class="st">"last_plot.phylo"</span>, </span>
+<span id="cb45-66"><a href="#cb45-66" aria-hidden="true" tabindex="-1"></a>              <span class="at">envir =</span> .PlotPhyloEnv)</span>
+<span id="cb45-67"><a href="#cb45-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-68"><a href="#cb45-68" aria-hidden="true" tabindex="-1"></a><span class="co"># xy coordinates of tips</span></span>
+<span id="cb45-69"><a href="#cb45-69" aria-hidden="true" tabindex="-1"></a>ntip <span class="ot">&lt;-</span> lastPP<span class="sc">$</span>Ntip</span>
+<span id="cb45-70"><a href="#cb45-70" aria-hidden="true" tabindex="-1"></a>xy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> lastPP<span class="sc">$</span>xx[<span class="dv">1</span><span class="sc">:</span>ntip],</span>
+<span id="cb45-71"><a href="#cb45-71" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> lastPP<span class="sc">$</span>yy[<span class="dv">1</span><span class="sc">:</span>ntip]) </span>
+<span id="cb45-72"><a href="#cb45-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-73"><a href="#cb45-73" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(images)) {</span>
+<span id="cb45-74"><a href="#cb45-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_image</span>(png<span class="sc">::</span><span class="fu">readPNG</span>(images[i]),</span>
+<span id="cb45-75"><a href="#cb45-75" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> xy[i, <span class="dv">1</span>],</span>
+<span id="cb45-76"><a href="#cb45-76" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> xy[i, <span class="dv">2</span>], </span>
+<span id="cb45-77"><a href="#cb45-77" aria-hidden="true" tabindex="-1"></a>            <span class="at">width =</span> <span class="fl">0.75</span>)</span>
+<span id="cb45-78"><a href="#cb45-78" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="color_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get image names</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>imnames <span class="ot">&lt;-</span> tools<span class="sc">::</span><span class="fu">file_path_sans_ext</span>(<span class="fu">basename</span>(images))</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get tip labels</span></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>tipnames <span class="ot">&lt;-</span> tree<span class="sc">$</span>tip.label</span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># check that images are in correct order:</span></span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>image_order <span class="ot">&lt;-</span> <span class="fu">match</span>(tipnames, imnames)</span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>images <span class="ot">&lt;-</span> images[image_order]</span>
-<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="do">## final plot</span></span>
-<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">4</span>))</span>
-<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tree, </span>
-<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">show.tip.label =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">direction =</span> <span class="st">"upward"</span>)</span>
-<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="co"># parameters from plotting environment</span></span>
-<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>lastPP <span class="ot">&lt;-</span> <span class="fu">get</span>(<span class="st">"last_plot.phylo"</span>, </span>
-<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>              <span class="at">envir =</span> .PlotPhyloEnv)</span>
-<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a><span class="co"># xy coordinates of tips</span></span>
-<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>ntip <span class="ot">&lt;-</span> lastPP<span class="sc">$</span>Ntip</span>
-<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>xy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> lastPP<span class="sc">$</span>xx[<span class="dv">1</span><span class="sc">:</span>ntip],</span>
-<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> lastPP<span class="sc">$</span>yy[<span class="dv">1</span><span class="sc">:</span>ntip]) </span>
-<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(images)) {</span>
-<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_image</span>(png<span class="sc">::</span><span class="fu">readPNG</span>(images[i]),</span>
-<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> xy[i, <span class="dv">1</span>],</span>
-<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> xy[i, <span class="dv">2</span>], </span>
-<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a>            <span class="at">width =</span> <span class="fl">0.75</span>)</span>
-<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in png::readPNG(images[i]): libpng warning: iCCP: known incorrect sRGB
-profile
-
-Warning in png::readPNG(images[i]): libpng warning: iCCP: known incorrect sRGB
-profile</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="color_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid" width="672"></p>
+<p><img src="color_files/figure-html/njtree-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 <section id="permutational-manova" class="level2">
 <h2 class="anchored" data-anchor-id="permutational-manova">Permutational MANOVA</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  preliminaries</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>c.data3 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">X =</span> <span class="fu">rownames</span>(c.data2), c.data2)</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>e.data2 <span class="ot">&lt;-</span> e.data <span class="sc">%&gt;%</span> </span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">'X'</span>,<span class="st">'ColorGroup'</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(X <span class="sc">!=</span> <span class="st">'611'</span>)</span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>gahagan <span class="ot">&lt;-</span> <span class="fu">left_join</span>(e.data2, c.data3, <span class="at">by =</span> <span class="st">"X"</span>) <span class="co"># left join by specimen number</span></span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>gahagan.dist <span class="ot">&lt;-</span> gahagan[,<span class="dv">3</span><span class="sc">:</span><span class="dv">43</span>] <span class="co"># color distance matrix</span></span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>) <span class="co"># make results reproducible</span></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="co"># model: biface color as a function of Caddo behavioral region</span></span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>gahagan.colour <span class="ot">&lt;-</span> <span class="fu">adonis2</span>(gahagan.dist <span class="sc">~</span> ColorGroup,</span>
-<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data =</span> gahagan,</span>
-<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>                          <span class="at">permutations =</span> <span class="dv">10000</span>,</span>
-<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>                          <span class="at">method =</span> <span class="st">'bray'</span>)</span>
-<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="do">## does color differ by behavioral region?</span></span>
-<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>gahagan.colour</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="do">##  preliminaries</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>c.data3 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="at">X =</span> <span class="fu">rownames</span>(c.data2), c.data2)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>e.data2 <span class="ot">&lt;-</span> e.data <span class="sc">%&gt;%</span> </span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">'X'</span>,<span class="st">'ColorGroup'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(X <span class="sc">!=</span> <span class="st">'611'</span>)</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>gahagan <span class="ot">&lt;-</span> <span class="fu">left_join</span>(e.data2, c.data3, <span class="at">by =</span> <span class="st">"X"</span>) <span class="co"># left join by specimen number</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>gahagan.dist <span class="ot">&lt;-</span> gahagan[,<span class="dv">3</span><span class="sc">:</span><span class="dv">43</span>] <span class="co"># color distance matrix</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>) <span class="co"># make results reproducible</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="co"># model: biface color as a function of Caddo behavioral region</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>gahagan.colour <span class="ot">&lt;-</span> <span class="fu">adonis2</span>(gahagan.dist <span class="sc">~</span> ColorGroup,</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>                          <span class="at">data =</span> gahagan,</span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>                          <span class="at">permutations =</span> <span class="dv">10000</span>,</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>                          <span class="at">method =</span> <span class="st">'bray'</span>)</span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="do">## does color differ by behavioral region?</span></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>gahagan.colour</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Permutation test for adonis under reduced model
 Terms added sequentially (first to last)
@@ -752,10 +738,10 @@ Permutation: free
 Number of permutations: 10000
 
 adonis2(formula = gahagan.dist ~ ColorGroup, data = gahagan, permutations = 10000, method = "bray")
-           Df SumOfSqs      R2     F    Pr(&gt;F)    
-ColorGroup  1  0.84507 0.42831 28.47 9.999e-05 ***
-Residual   38  1.12795 0.57169                    
-Total      39  1.97302 1.00000                    
+           Df SumOfSqs      R2    F    Pr(&gt;F)    
+ColorGroup  1  0.83887 0.42598 28.2 9.999e-05 ***
+Residual   38  1.13042 0.57402                   
+Total      39  1.96929 1.00000                   
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
