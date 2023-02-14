@@ -12,51 +12,91 @@ library(vegan)
 library(ape)
 
 # get image paths
-images <- colordistance::getImagePaths('la.gahagan')
+images <- colordistance::getImagePaths('lagahagan')
 
-# generate color distance matrix
-cdm <- imageClusterPipeline(images)
+# generate color distance matrix ----
+cdm <- imageClusterPipeline(images,
+                            cluster.method = 'hist',
+                            distance.method = 'emd',
+                            lower = FALSE,
+                            upper = FALSE,
+                            hist.bins = 3,
+                            color.space = 'lab',
+                            ref.white = 'D65',
+                            plot.bins = TRUE,
+                            pausing = FALSE
+)
 
 # replace NAs with 0
 cdm[is.na(cdm)] = 0
 # export color distance matrix
 write.csv(cdm, file = "distance_matrix.csv")
-```
 
-# Permutational MANOVA
+## preliminaries ----
+# import categorical data
+e.data <- read.csv('catdata.csv',
+                       header = TRUE,
+                       as.is = TRUE)
 
-```{r permanovacolor}
 # import color distance matrix
-c.data <- read.csv("distance_matrix.csv",
+c.data <- read.csv('distance_matrix.csv',
                    header = TRUE,
-                   as.is=TRUE)
+                   as.is = TRUE)
 
-# import qual data
-g.data <- read.csv("qdatacol.csv",
-                   header = TRUE,
-                   as.is=TRUE) %>% 
-  select(specimen, ColorGroup)
+# cdm rev sans X + .png (for CIELab)
+c.data2 <- as.data.frame(c.data %>% 
+                           select(c(X1BlkThn.png:X666.png)) %>% 
+                           rename('1BlkThn' = X1BlkThn.png,
+                                  '1Case2LG' = X1Case2LG.png,
+                                  '1Case2SM' = X1Case2SM.png,
+                                  '1LGGray' = X1LGGray.png,
+                                  '3Ba90' = X3Ba90.png,
+                                  '3Bb1' = X3Bb1.png,
+                                  '3Bb3' = X3Bb3.png,
+                                  '3Bb4' = X3Bb4.png,
+                                  '3Bb5' = X3Bb5.png,
+                                  '3Bb6' = X3Bb6.png,
+                                  '3Bb7' = X3Bb7.png,
+                                  '3Bb8' = X3Bb8.png,
+                                  '489' = X489.png,
+                                  '490' = X490.png,
+                                  '532' = X532.png,
+                                  '533' = X533.png,
+                                  '541' = X541.png,
+                                  '542' = X542.png,
+                                  '543' = X543.png,
+                                  '544' = X544.png,
+                                  '545' = X545.png,
+                                  '546' = X546.png,
+                                  '547' = X547.png,
+                                  '548' = X548.png,
+                                  '549' = X549.png,
+                                  '550' = X550.png,
+                                  '551' = X551.png,
+                                  '569' = X569.png,
+                                  '593' = X593.png,
+                                  '605' = X605.png,
+                                  '606' = X606.png,
+                                  '607' = X607.png,
+                                  '608' = X608.png,
+                                  '609' = X609.png,
+                                  '610' = X610.png,
+                                  '611' = X611.png,
+                                  '612' = X612.png,
+                                  '613' = X613.png,
+                                  '614' = X614.png,
+                                  '622' = X622.png,
+                                  '666' = X666.png)
+)
 
-# preliminaries
-colnames(g.data) <- c('X','ColorGroup') # rename columns prior to join
-gahagan <- left_join(g.data, c.data, by = "X") # left join by specimen number
-gahagan.dist <- gahagan[,3:41] # color distance matrix
-set.seed(10) # make results reproducible
-
-# model: biface color as a function of Caddo behavioral region
-gahagan.colour <- adonis2(gahagan.dist ~ ColorGroup,
-                          data = gahagan,
-                          permutations = 10000,
-                          method = 'bray')
-
-## does color differ by behavioral region?
-gahagan.colour
+# column names to ID
+rownames(c.data2) <- colnames(c.data2)
 ```
 
-# Ordination + visualization
+## Neighbor-joining tree
 
-```{r colorspaceplot, out.width = "100%", dpi = 300, echo=TRUE, warning=FALSE, message=FALSE}
-# define add_image function:
+```{r}
+# define add_image function ----
 add_image <- function(obj,
                       x = NULL,
                       y = NULL,
@@ -85,36 +125,81 @@ add_image <- function(obj,
                         angle = angle)
 }
 
-# colorspace + images
-nmds_scores <- scores(metaMDS(comm = as.dist(cdm)))
+## neighbor-joining tree ----
+tree <- nj(as.dist(c.data2))
+# plot tree
+plot(tree,
+     show.tip.label = FALSE,
+     direction = "upward")
 
-# set plot parameters
-plot(nmds_scores,
-     xlim = c(-0.45, 0.4),
-     ylim = c(-0.11, 0.13),
-     cex = 0.001
-     )
+# get parameters from plotting environment
+lastPP <- get("last_plot.phylo", 
+              envir = .PlotPhyloEnv)
 
-#Create convex hulls that highlight behavioral regions
-ordihull(
-  nmds_scores,
-  g.data$ColorGroup,
-  draw = c("polygon"),
-  col = NULL,
-  border = c("#798E87","#C27D38")
-)
+# get xy coordinates of tips
+ntip <- lastPP$Ntip
 
-# add images
+# first n values are tips/remaining values are node coordinates
+xy <- data.frame(x = lastPP$xx[1:ntip],
+                 y = lastPP$yy[1:ntip]) 
+
+# add points
+points(xy[ , 1], xy[ , 2], 
+       col = viridisLite::viridis(40), 
+       pch = 19, cex = 2)
+
+# get image names
+imnames <- tools::file_path_sans_ext(basename(images))
+
+# get tip labels
+tipnames <- tree$tip.label
+
+# check that images are in correct order:
+image_order <- match(tipnames, imnames)
+images <- images[image_order]
+
+## final plot
+par(mar = rep(0, 4))
+plot(tree, 
+     show.tip.label = FALSE, 
+     direction = "upward")
+
+# parameters from plotting environment
+lastPP <- get("last_plot.phylo", 
+              envir = .PlotPhyloEnv)
+
+# xy coordinates of tips
+ntip <- lastPP$Ntip
+xy <- data.frame(x = lastPP$xx[1:ntip],
+                 y = lastPP$yy[1:ntip]) 
+
 for (i in 1:length(images)) {
-  
-  # read image:
-  img <- png::readPNG(images[i]) 
-  
-  # add image:
-  add_image(img, 
-            x = nmds_scores[i, 1], 
-            y = nmds_scores[i, 2],
-            width = 0.025)
+  add_image(png::readPNG(images[i]),
+            x = xy[i, 1],
+            y = xy[i, 2], 
+            width = 0.75)
 }
 ```
 
+
+## Permutational MANOVA
+
+```{r permanovacolor}
+##  preliminaries
+c.data3 <- cbind(X = rownames(c.data2), c.data2)
+e.data2 <- e.data %>% 
+  select('X','ColorGroup') %>% 
+  filter(X != '611')
+gahagan <- left_join(e.data2, c.data3, by = "X") # left join by specimen number
+gahagan.dist <- gahagan[,3:43] # color distance matrix
+set.seed(10) # make results reproducible
+
+# model: biface color as a function of Caddo behavioral region
+gahagan.colour <- adonis2(gahagan.dist ~ ColorGroup,
+                          data = gahagan,
+                          permutations = 10000,
+                          method = 'bray')
+
+## does color differ by behavioral region?
+gahagan.colour
+```

@@ -15,10 +15,22 @@ library(ggExtra)
 library(ggConvexHull)
 library(wesanderson)
 
-## load pXRF + qual.data----
-raw <- read.csv('pxrf1.csv',
+## load pXRF + categorical.data----
+pxrf <- read.csv('pxrf.csv',
+                 header = TRUE,
+                 as.is = TRUE)
+
+cat <- read.csv('catdata.csv',
                 header = TRUE,
                 as.is = TRUE)
+
+# join categorical + pxrf data sans 611
+cat.pxrf <- left_join(cat, pxrf, by = "X") %>% 
+  filter(X != '611')
+
+write.csv(cat.pxrf, 
+          "catpxrf.csv", 
+          row.names=FALSE)
 
 #palette
 pal <- wes_palette("Moonrise2")
@@ -28,13 +40,13 @@ pal <- wes_palette("Moonrise2")
 
 ```{r pca}
 #pca
-df <- data.frame(raw[,c(5:11)])
-pch.gps <- c(15,18)[as.factor(raw$ColorGroup)]
-ColorGroup <- raw$ColorGroup
+df <- data.frame(cat.pxrf[,c(7:13)])
+pch.gps <- c(15,18)[as.factor(cat.pxrf$ColorGroup)]
+ColorGroup <- cat.pxrf$ColorGroup
 
 ## pca plot using correlation matrix
 pca <- autoplot(prcomp(df, scale. = TRUE),
-                data = raw,
+                data = cat.pxrf,
                 asp = 1,
                 shape = pch.gps,
                 colour = "ColorGroup",
@@ -52,15 +64,15 @@ ggMarginal(pca, groupColour = TRUE)
 
 ```{r permanova general}
 # perMANOVA
-gahagan.matrix <- as.matrix(raw[,c(5:11)]) # response vars
+gahagan.matrix <- as.matrix(df) # response vars
 gahagan.mat <- sqrt(gahagan.matrix) # sqrt transform
 gahagan.dist <- vegdist(gahagan.mat,
                         method = 'bray') # dissimilarity matrix
 set.seed(10) # make results reproducible
 
-# model: gahagan raw material as a function of ColorGroup
+# model: gahagan cat.pxrf material as a function of ColorGroup
 gahagan <- adonis2(gahagan.dist ~ ColorGroup,
-                   data = raw,
+                   data = cat.pxrf,
                    permutations = 10000,
                    method = 'bray')
 

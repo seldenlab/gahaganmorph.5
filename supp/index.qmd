@@ -1,5 +1,5 @@
 ---
-title: "Distinct material culture signatures suggest that two Caddo communities shared common trading relationships"
+title: "Did two Caddo communities share common trade relationships?"
 author:
   - name: Robert Z. Selden, Jr.
     affiliations:
@@ -20,7 +20,7 @@ description: Supplemental Materials
 
 # Basis of inquiry
 
-Nodule size and mechanical flaking properties have routinely been advanced to account for morphological differences among sites and assemblages in areas rich in raw material/s. However, in instances where lithic raw material of a particular size was scarce, did traders from different sites interact with common brokers from regions associated with lithic abundance? Gahagan bifaces are among those implements most diagnostic of Formative/Early Caddo material culture assemblages; however, due to a lack of local production evidence, it is also widely accepted that Gahagan bifaces were not made by the Caddo. This study asks whether Caddo traders from Gahagan Mound and Mounds Plantation may have engaged in commerce with brokers from common extralocal communities. Results demonstrate that two distinct raw materials were used in the production of Gahagan bifaces. Thus, it is posited that Gahagan bifaces from Caddo mortuary contexts at Gahagan Mound and Mounds Plantation were acquired through trade and/or exchange with two or more producers operating under similar cultural constraints, who manufactured Gahagan bifaces distinct in color, geochemistry, and shape.
+Nodule size and mechanical flaking properties have routinely been advanced to account for morphological differences between sites and assemblages that occur in areas rich in raw material. However, in instances where lithic raw material was scarce, did Caddo traders from different sites interact with brokers from common extralocal communities associated with lithic abundance? Gahagan bifaces are among those implements most diagnostic of Formative/Early Caddo material culture assemblages; however, due to a lack of local production evidence, it is also widely accepted that Gahagan bifaces were not produced by the Caddo. This study asks whether Caddo traders from Gahagan Mound and Mounds Plantation may have engaged in commerce with brokers from common extralocal communities. Results demonstrate that two distinct raw materials were used in the production of Gahagan bifaces. Thus, it is posited that Gahagan bifaces from Caddo mortuary contexts at Gahagan Mound and Mounds Plantation were acquired through trade with two or more producers operating under similar cultural constraints, who manufactured Gahagan bifaces that were distinct in color, geochemistry, and shape.
 
 ### Keywords
 
@@ -28,7 +28,7 @@ _American Southeast, Caddo, NAGPRA, lithics, raw material color, pXRF, computati
 
 ## Primary findings
 
-```{r figmap, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Location of Mounds Plantation and Gahagan Mound, illustrating local geology, and geographic extent of ancestral Caddo area (dashed white)."}
+```{r figmap, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Location of Mounds Plantation and Gahagan Mound, illustrating the geographic extent of the Red River basin (blue) and the ancestral Caddo area (dashed white)."}
 knitr::include_graphics('img/map.png')
 ```
 
@@ -46,8 +46,8 @@ knitr::include_graphics('img/gahagan.color.png')
 
 Bifaces were coded as ColorGroup A and ColorGroup B using the output from a neighbor-joining tree, calculated using the color distance matrix. To test whether bifaces differ in color according to ColorGroup assignment, the color distance matrix was exported and joined with the categorical data. Those data were used in a permutational multivariate analysis of variance in the `vegan` package to evaluate whether biface color differs by raw material color group [@R;@vegan], where the two raw material color groups were found to differ significantly (_permutations = 10,000; **Pr(>F) = 9.999e-05**_).
 
-```{r colorspace, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="NMDS summarizing color variation in Gahagan bifaces, where ColorGroup A is depicted in gray, and the ColorGroup B is depicted in orange with each point plotted in color space to visualize color variation."}
-knitr::include_graphics('img/colorspace.png')
+```{r colorspace, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Neighbor-joining tree illustrating color data for the two Gahagan biface ColorGroups; ColorGroup B (left) and ColorGroup A (right)."}
+knitr::include_graphics('img/cielab.png')
 ```
 
 ### Geochemistry
@@ -62,7 +62,7 @@ Elemental data were subsequently imported to R for a principal components analys
 knitr::include_graphics('img/pcaelem-1.png')
 ```
 
-The PCA illustrates 59.32 percent of the variation in the sample among PC1 (42.81 percent) and PC2 (16.51 percent). The perMANOVA demonstrated that elemental values differ significantly by raw material color groups (_permutations = 10,000; **Pr(>F) = 0.018**_).
+The PCA illustrates 59.97 percent of the variation in the sample among PC1 (42.52 percent) and PC2 (17.45 percent). The perMANOVA demonstrated that elemental values differ significantly by raw material color groups (_permutations = 10,000; **Pr(>F) = 0.0406**_).
 
   -   Raw material color groups **differ significantly** in geochemistry
   

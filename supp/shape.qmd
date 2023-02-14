@@ -3,21 +3,13 @@ title: "RMCG and Morphology"
 ---
 
 ```{r load}
-# shape/size ~ raw material?
-
-# load----
-## load packages
+# load packages
 library(here)
 library(tidyverse)
 library(geomorph)
 library(wesanderson)
 
-## load pXRF + qual.data----
-raw <- read.csv('qdata.csv',
-                header = TRUE,
-                as.is = TRUE)
-
-## load GM data----
+# load shape data----
 source('readmulti.csv.R')
 
 # read .csv files
@@ -26,7 +18,6 @@ filelist <- list.files(pattern = ".csv")
 coords <- readmulti.csv(filelist)
 setwd("../")
 
-# read qualitative data
 qdata <- read.csv("qdata.csv", 
                   header = TRUE, 
                   row.names = 1)
@@ -60,7 +51,7 @@ summary(pca)
 # set plot parameters to plot by context
 pch.gps <- c(15,18)[as.factor(qdata$ColorGroup)]
 col.gps <- pal[as.factor(qdata$ColorGroup)]
-col.hull <- c("#C27D38","#798E87")
+col.hull <- c("#798E87","#C27D38")
 
 ## plot pca----
 pc.plot <- plot(pca, asp = 1,
