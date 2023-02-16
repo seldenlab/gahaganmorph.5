@@ -9,6 +9,11 @@ author:
   - name: Catherine G. Cooper
     affiliations:
       - National Center for Preservation Technology and Training, National Park Service
+  - name: John E. Dockall
+    affiliations:
+      - Stantec, Inc.
+    email: john.dockall@stantec.com
+    orcid: 0000-0002-0940-7144
 bibliography: [rawmat.bib]
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 link-citations: yes
