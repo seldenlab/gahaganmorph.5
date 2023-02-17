@@ -2,9 +2,9 @@ project:
   type: website
   render:
     - index.qmd
-    - color.qmd
-    - pxrf-color.qmd
-    - shape.qmd
+    - c01-color.qmd
+    - c02-pxrf.qmd
+    - c03-morphology.qmd
 
 website:
   margin-header: |
@@ -14,9 +14,9 @@ website:
     right:
       - href: index.qmd
         text: Home
-      - color.qmd
-      - pxrf-color.qmd
-      - shape.qmd
+      - c01-color.qmd
+      - c02-pxrf.qmd
+      - c03-morphology.qmd
 
 format:
   html:
