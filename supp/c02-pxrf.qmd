@@ -28,10 +28,6 @@ cat <- read.csv('catdata.csv',
 cat.pxrf <- left_join(cat, pxrf, by = "X") %>% 
   filter(X != '611')
 
-write.csv(cat.pxrf, 
-          "catpxrf.csv", 
-          row.names=FALSE)
-
 #palette
 pal <- wes_palette("Moonrise2")
 ```
