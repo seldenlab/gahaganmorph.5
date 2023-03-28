@@ -1,5 +1,5 @@
 ---
-title: "Did Caddo communities share common trade relationships?"
+title: "Diagnostic biface acquisition through trade with distinct extralocal communities of practice: A case study from the American Southeast"
 author:
   - name: Robert Z. Selden, Jr.
     affiliations:
@@ -25,11 +25,11 @@ description: Supplemental Materials
 
 # Basis of inquiry
 
-Nodule size and mechanical flaking properties have routinely been advanced to account for morphological differences between sites and assemblages that occur in areas where raw material is abundant. However, in instances where lithic raw materials---larger nodules in particular---were scarce, did traders from different sites interact with brokers from common extralocal communities to acquire large bifaces that generally conformed to local design constraints? Gahagan bifaces are among those implements diagnostic of Formative/Early Caddo material culture (CE 800 - 1250); although, due to a lack of local production evidence, it is also widely accepted that Gahagan bifaces were not produced by the Caddo. This study asks whether Caddo traders from Gahagan Mound and Mounds Plantation may have engaged in commerce with brokers from common extralocal communities to acquire Gahagan bifaces. Results demonstrate Gahagan biface geochemistry and shape to be distinct based on color group assignment; however, neither biface shape nor size was correlated with geochemistry. Thus, it is posited that Gahagan bifaces from Caddo mortuary contexts at Gahagan Mound and Mounds Plantation were acquired through trade with two or more non-local communities, where production activities yielded Gahagan bifaces distinct in raw material color, geochemistry, and shape.
+Nodule size and mechanical flaking properties have been advanced to account for assemblage level differences in the morphology of stone tools within regions where raw material is abundant. However, in instances where lithic raw materials---larger nodules in particular---were scarce, did traders interact with brokers from distinct extralocal communities to acquire large bifaces? Gahagan bifaces are among those implements diagnostic of Formative/Early Caddo material culture (CE 800 - 1250); although, due to a lack of local production evidence, it is also widely accepted that Gahagan bifaces were not manufactured by the Caddo. This study asks whether Caddo traders engaged in commerce with brokers from discrete extralocal communities of practice to acquire Gahagan bifaces. Results demonstrate significant differences in Gahagan biface geochemistry and shape based on color group assignment. Thus, findings suggest that Gahagan biface shape was conditioned by raw material color. It is posited that Caddo traders acquired Gahagan bifaces from two distinct communities of practice, where local raw material and production differences resulted in Gahagan bifaces that were unique in color, geochemistry, and shape.
 
 ### Keywords
 
-_American Southeast, Caddo, NAGPRA, lithics, raw material color, pXRF, computational archaeology, anthroinformatics, archaeoinformatics, museum studies, digital humanities, non-Western art history, STEM, STEAM_
+_American Southeast, Caddo, NAGPRA, lithics, raw material color, pXRF, computational archaeology, museum studies, digital humanities, non-Western art history, STEM, STEAM_
 
 ## Primary findings
 
@@ -85,12 +85,14 @@ To assess whether `shape` and `size` differs by `ColorGroup`, Procrustes ANOVAs 
 
   -   Gahgan biface shape _**differs significantly**_ by raw material color group
   -   Gahagan biface size does not differ by raw material color group
-  -   Gahagan biface shape is not correlated with the geochemistry of raw material color groups
-  -   Gahagan biface size is not correlated with the geochemistry of raw material color groups
   
 ```{r figmshape, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Mean shapes summarizing variation in Gahagan bifaces from ColorGroup A and ColorGroup B. In the comparison, black spheres articulate with ColorGroupA, and gray spheres with ColorGroup B."}
 knitr::include_graphics('img/fig5.jpg')
 ```
+
+## Summary of findings
+
+Gahagan bifaces from Caddo mortuary contexts at Gahagan Mound and Mounds Plantation are thought to have been products of trade and/or exchange due to a lack of evidence for local manufacture and the absence of locally-available raw material sources of similar size and quality. The results of the quantitative analysis of raw material color were used to assign bifaces to two color groups; one characterized as being more brown in color, and the other, more gray. The analyses of geochemistry and morphology demonstrate significant differences between color groups. Thus, findings suggest that Gahagan biface shape was conditioned by raw material color. The implication, then, is that Caddo traders acquired Gahagan bifaces from two distinct communities of practice, where local raw material and production differences resulted in Gahagan bifaces that were unique in color, geochemistry, and shape.
 
 ## Acknowledgments
 
