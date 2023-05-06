@@ -8,7 +8,7 @@ project:
 
 website:
   margin-header: |
-    ![](/img/slab.png)
+    ![](/sfasu.png)
   navbar:
     logo: "sfasu.png"
     right:
