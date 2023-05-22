@@ -48,7 +48,7 @@ Southeast}
 
 
 \author{\name{Robert Z. Selden, Jr.$^{a}$, Catherine G.
-Cooper$^{b}$, John E. Dockall$^{c}$}
+Cooper$^{b}$, and John E. Dockall$^{c}$}
 \affil{$^{a}$Heritage Research Center, Stephen F. Austin State
 University; Department of Biology, Stephen F. Austin State University;
 Texas Archeological Research Laboratory, The University of Texas at
@@ -59,7 +59,7 @@ Training, National Park Service; $^{c}$Stantec, Inc.}
 
 \thanks{CONTACT Robert Z. Selden,
 Jr.. Email: \href{mailto:zselden@sfasu.edu}{\nolinkurl{zselden@sfasu.edu}}, Catherine
-G. Cooper. Email: , John E. Dockall. Email: }
+G. Cooper. Email: , and John E. Dockall. Email: }
 
 \maketitle
 
@@ -102,8 +102,116 @@ relation to the universe of things.'' \textbf{--H. Thomas Henry Huxley},
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
+\begin{figure}
+\includegraphics[width=1\linewidth]{ms_files/figure-latex/map} \caption{Location of Mounds Plantation and Gahagan Mound, illustrating the geographic extent of the Red River basin (blue) and the ancestral Caddo area (dashed white).}\label{fig:figmap}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{ms_files/figure-latex/fig02} \caption{Gahagan bifaces from Caddo burial caches at Gahagan Mound and Mounds Plantation.}\label{fig:figbifaces}
+\end{figure}
+
 \hypertarget{methods-and-results}{%
 \section{Methods and Results}\label{methods-and-results}}
+
+\hypertarget{color}{%
+\subsection{Color}\label{color}}
+
+Gahagan bifaces were scanned at 600 dpi using an HP ScanJet G4050.
+Images were subsequently transferred to a transparent background in
+Photoshop in preparation for analysis using the \texttt{colordistance}
+package in R \citep{R, RN11200}. A histogram binning method was used to
+group similar colors, and pairwise distances between histograms were
+computed using earth mover's distance, yielding two distinct raw
+material color groups \citep{RN11201, RN11200}.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{ms_files/figure-latex/fig3} \caption{Color binning process for a single object; adapted from Weller and Westneat (2019:Figure 2). In a, image of a Gahagan biface with a transparent background; b, 3D scatterplot of 10,000 non-background pixels in RGB color space; c, clusters from histogram displayed in RGB color space; and d, histogram showing the proportion of non-background pixels assigned to each bin.}\label{fig:colorout}
+\end{figure}
+
+Bifaces were coded as ColorGroup A and ColorGroup B using the output
+from a neighbor-joining tree, calculated using the color distance
+matrix. To test whether bifaces differ in color according to ColorGroup
+assignment, the color distance matrix was exported and joined with the
+categorical data. Those data were used in a permutational multivariate
+analysis of variance in the \texttt{vegan} package to evaluate whether
+biface color differs by raw material color group \citep{R, vegan}, where
+the two raw material color groups were found to differ significantly
+(\emph{permutations = 10,000; \textbf{Pr(\textgreater F) = 9.999e-05}}).
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{ms_files/figure-latex/fig4} \caption{Neighbor-joining tree illustrating color data for the two Gahagan biface ColorGroups; ColorGroup B (left) and ColorGroup A (right).}\label{fig:colorspace}
+\end{figure}
+
+\hypertarget{geochemistry}{%
+\subsection{Geochemistry}\label{geochemistry}}
+
+A Bruker Trace Vi handheld portable X-ray Fluorescence (pXRF) instrument
+was used to collect elemental data. The instrument was transported to
+the Williamson Museum and Louisiana State Exhibit Museum and set up in a
+nose-down configuration, where samples were raised into contact with the
+pXRF window using a pair of small jacks cushioned with fabric. Due to
+surface irregularities, the contact between the window and the bifaces
+was imperfect, resulting in variable count and response rates during
+data collection.
+
+Data was collected using the following scan parameters: 40kV, 35uA, Ti
+25um:Al 300um filter for 180 seconds. Peaks in each spectrum were
+identified manually in Bruker's Artax software; once elements were
+identified, the spectrum was evaluated by the Artax Bayesian statistical
+program to separate overlapping peaks. The Artax results were exported
+as net peak areas normalized to the silicon (Si) peak.
+
+Elemental data were subsequently imported to R for a principal
+components analysis (PCA), followed by a permutational multivariate
+analysis of variance (perMANOVA), used to assess whether raw material
+differs between sites.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{ms_files/figure-latex/pcaelem-1} \caption{Composite image illustrating the plot of first two principal components by site using a correlation matrix, illustrating 59.32 percent of cumulative shape variation, where gray squares denote Color Group A, and orange triangles denote Color Group B.}\label{fig:figsite}
+\end{figure}
+
+The PCA illustrates 59.97 percent of the variation in the sample among
+PC1 (42.52 percent) and PC2 (17.45 percent). The perMANOVA demonstrated
+that elemental values differ significantly by raw material color groups
+(\emph{permutations = 10,000; \textbf{Pr(\textgreater F) = 0.0406}}).
+
+\hypertarget{geometric-morphometrics}{%
+\subsection{Geometric morphometrics}\label{geometric-morphometrics}}
+
+Landmark data were aligned to a global coordinate system
+\citep{RN8477, RN7502, RN11622, RN11623, RN11563}, achieved through
+generalized Procrustes superimposition \citep{RN11138, RN478, RN1646} in
+R using the \texttt{geomorph} and \texttt{RRPP} packages
+\citep{RN1655, RN11775, RN11530, RN1774, RN9565}. Procrustes
+superimposition translates and rotates the coordinate data to allow for
+comparisons among objects, while also scaling each biface using
+unit-centroid size---the square root of the sum of squared distances
+from each landmark to the specimen's centroid
+\citep{RN11139, RN11140, RN11564, RN478}. The \texttt{geomorph} package
+uses a partial Procrustes superimposition that projects the aligned
+specimens into tangent space subsequent to alignment in preparation for
+the use of multivariate methods that assume linear space
+\citep{RN11141, RN11142, RN1646, RN11563}.
+
+Principal components analysis \citep{RN1746} was used to visualize shape
+variation among the elliptical bifaces, and the scatterplot represents
+the dispersion of shapes in tangent space
+\citep{RN8633, RN5616, RN11143, RN7550}. Shape ranges described by each
+principal axis are commonly visualized using thin-plate spline warping
+of a reference image \citep{RN1731, RN479}.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{ms_files/figure-latex/pcashape-1} \caption{PCA summarizing shape variation in Gahagan bifaces from Color Group A (gray squares) and Color Group B (orange triangles).}\label{fig:figpcashape}
+\end{figure}
+
+To assess whether \texttt{shape} and \texttt{size} differs by
+\texttt{ColorGroup}, Procrustes ANOVAs \citep{RN1749} were run that
+enlist effect-sizes (zscores) computed as standard deviates of the
+generated sampling distributions \citep{RN1756}. A residual
+randomization permutation procedure (RRPP; n = 10,000 permutations) was
+used for all Procrustes ANOVAs \citep{RN1655, RN11775}, which has higher
+statistical power and a greater ability to identify patterns in the data
+should they be present \citep{RN1719}.
 
 \hypertarget{discussion-and-conclusion}{%
 \section{Discussion and Conclusion}\label{discussion-and-conclusion}}

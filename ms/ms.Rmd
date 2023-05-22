@@ -8,7 +8,7 @@ author:
     email: zselden@sfasu.edu
   - name: Catherine G. Cooper
     affil: b
-  - name: John E. Dockall
+  - name: and John E. Dockall
     affil: c
 affiliation:
   - num: a
@@ -36,11 +36,55 @@ output: rticles::tf_article
 
 # Introduction
 
+```{r figmap, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Location of Mounds Plantation and Gahagan Mound, illustrating the geographic extent of the Red River basin (blue) and the ancestral Caddo area (dashed white)."}
+knitr::include_graphics('ms_files/figure-latex/map.png')
+```
 
+```{r figbifaces, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Gahagan bifaces from Caddo burial caches at Gahagan Mound and Mounds Plantation."}
+knitr::include_graphics('ms_files/figure-latex/fig02.jpg')
+```
 
 # Methods and Results
 
+## Color
 
+Gahagan bifaces were scanned at 600 dpi using an HP ScanJet G4050. Images were subsequently transferred to a transparent background in Photoshop in preparation for analysis using the `colordistance` package in R [@R;@RN11200]. A histogram binning method was used to group similar colors, and pairwise distances between histograms were computed using earth mover’s distance, yielding two distinct raw material color groups [@RN11201;@RN11200].
+
+```{r colorout, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Color binning process for a single object; adapted from Weller and Westneat (2019:Figure 2). In a, image of a Gahagan biface with a transparent background; b, 3D scatterplot of 10,000 non-background pixels in RGB color space; c, clusters from histogram displayed in RGB color space; and d, histogram showing the proportion of non-background pixels assigned to each bin."}
+knitr::include_graphics('ms_files/figure-latex/fig3.png')
+```
+
+Bifaces were coded as ColorGroup A and ColorGroup B using the output from a neighbor-joining tree, calculated using the color distance matrix. To test whether bifaces differ in color according to ColorGroup assignment, the color distance matrix was exported and joined with the categorical data. Those data were used in a permutational multivariate analysis of variance in the `vegan` package to evaluate whether biface color differs by raw material color group [@R;@vegan], where the two raw material color groups were found to differ significantly (_permutations = 10,000; **Pr(>F) = 9.999e-05**_).
+
+```{r colorspace, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Neighbor-joining tree illustrating color data for the two Gahagan biface ColorGroups; ColorGroup B (left) and ColorGroup A (right)."}
+knitr::include_graphics('ms_files/figure-latex/fig4.png')
+```
+
+## Geochemistry
+
+A Bruker Trace Vi handheld portable X-ray Fluorescence (pXRF) instrument was used to collect elemental data. The instrument was transported to the Williamson Museum and Louisiana State Exhibit Museum and set up in a nose-down configuration, where samples were raised into contact with the pXRF window using a pair of small jacks cushioned with fabric. Due to surface irregularities, the contact between the window and the bifaces was imperfect, resulting in variable count and response rates during data collection.
+
+Data was collected using the following scan parameters: 40kV, 35uA, Ti 25um:Al 300um filter for 180 seconds. Peaks in each spectrum were identified manually in Bruker’s Artax software; once elements were identified, the spectrum was evaluated by the Artax Bayesian statistical program to separate overlapping peaks. The Artax results were exported as net peak areas normalized to the silicon (Si) peak.
+
+Elemental data were subsequently imported to R for a principal components analysis (PCA), followed by a permutational multivariate analysis of variance (perMANOVA), used to assess whether raw material differs between sites.
+
+```{r figsite, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Composite image illustrating the plot of first two principal components by site using a correlation matrix, illustrating 59.32 percent of cumulative shape variation, where gray squares denote Color Group A, and orange triangles denote Color Group B."}
+knitr::include_graphics('ms_files/figure-latex/pcaelem-1.png')
+```
+
+The PCA illustrates 59.97 percent of the variation in the sample among PC1 (42.52 percent) and PC2 (17.45 percent). The perMANOVA demonstrated that elemental values differ significantly by raw material color groups (_permutations = 10,000; **Pr(>F) = 0.0406**_).
+
+## Geometric morphometrics
+
+Landmark data were aligned to a global coordinate system [@RN8477;@RN7502;@RN11622;@RN11623;@RN11563], achieved through generalized Procrustes superimposition [@RN11138;@RN478;@RN1646] in R using the `geomorph` and `RRPP` packages [@RN1655;@RN11775;@RN11530;@RN1774;@RN9565]. Procrustes superimposition translates and rotates the coordinate data to allow for comparisons among objects, while also scaling each biface using unit-centroid size---the square root of the sum of squared distances from each landmark to the specimen’s centroid [@RN11139;@RN11140;@RN11564;@RN478]. The `geomorph` package uses a partial Procrustes superimposition that projects the aligned specimens into tangent space subsequent to alignment in preparation for the use of multivariate methods that assume linear space [@RN11141;@RN11142;@RN1646;@RN11563].
+
+Principal components analysis [@RN1746] was used to visualize shape variation among the elliptical bifaces, and the scatterplot represents the dispersion of shapes in tangent space [@RN8633;@RN5616;@RN11143;@RN7550]. Shape ranges described by each principal axis are commonly visualized using thin-plate spline warping of a reference image [@RN1731;@RN479].
+
+```{r figpcashape, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="PCA summarizing shape variation in Gahagan bifaces from Color Group A (gray squares) and Color Group B (orange triangles)."}
+knitr::include_graphics('ms_files/figure-latex/pcashape-1.png')
+```
+
+To assess whether `shape` and `size` differs by `ColorGroup`, Procrustes ANOVAs [@RN1749] were run that enlist effect-sizes (zscores) computed as standard deviates of the generated sampling distributions [@RN1756]. A residual randomization permutation procedure (RRPP; n = 10,000 permutations) was used for all Procrustes ANOVAs [@RN1655;@RN11775], which has higher statistical power and a greater ability to identify patterns in the data should they be present [@RN1719].
 
 # Discussion and Conclusion
 
