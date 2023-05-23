@@ -66,7 +66,7 @@ A Bruker Trace Vi handheld portable X-ray Fluorescence (pXRF) instrument was use
 
 Data was collected using the following scan parameters: 40kV, 35uA, Ti 25um:Al 300um filter for 180 seconds. Peaks in each spectrum were identified manually in Bruker’s Artax software; once elements were identified, the spectrum was evaluated by the Artax Bayesian statistical program to separate overlapping peaks. The Artax results were exported as net peak areas normalized to the silicon (Si) peak.
 
-Elemental data were subsequently imported to R for a principal components analysis (PCA), followed by a permutational multivariate analysis of variance (perMANOVA), used to assess whether raw material differs between sites.
+Elemental data were subsequently imported to R for a principal components analysis (PCA), followed by a permutational multivariate analysis of variance (perMANOVA), used to assess whether raw material differs between sites [@R; @vegan].
 
 ```{r figsite, out.width = "100%", dpi = 300, echo=FALSE, warning=FALSE, fig.cap="Composite image illustrating the plot of first two principal components by site using a correlation matrix, illustrating 59.32 percent of cumulative shape variation, where gray squares denote Color Group A, and orange triangles denote Color Group B."}
 knitr::include_graphics('ms_files/figure-latex/pcaelem-1.png')
